@@ -28,7 +28,18 @@ jobs:
             README.md
             config.py
             server.py
-            *.png
-            *.jpg
+            screenshot_*.png
+            test_*.png
+            temp_*.png
+            *_crop_*.png
+            *_full_*.png
+            card_full_*.png
+            contacts_part*.png
+            faq_*_part*.png
+            faq_*_full_*.png
+            faq_*_bottom.png
+            faq_*_tabs_*.png
+            reviews_part*.png
+            small_photo*.png
             assets/**
             "Фотки на сайт"/**
