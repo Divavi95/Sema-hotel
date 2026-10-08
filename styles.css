@@ -341,6 +341,10 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
+.mobile-nav-header {
+  display: none;
+}
+
 .nav-mobile-contacts {
   display: none;
 }
@@ -1927,12 +1931,29 @@ body {
   flex-direction: column;
 }
 
+.curator-header-desktop {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.curator-avatar-desktop {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-sage);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
 .curator-name {
   font-family: 'Manrope', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: var(--color-forest);
-  margin-bottom: 4px;
+  margin-bottom: 0;
   line-height: 1.2;
 }
 
@@ -2519,6 +2540,10 @@ body {
     max-height: 800px;
     opacity: 1;
     margin-top: 18px;
+  }
+
+  .curator-header-desktop {
+    display: none !important;
   }
 
   /* 6. Рецензии и форма */
