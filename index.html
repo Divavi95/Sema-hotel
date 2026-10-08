@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261008_2">
+  <link rel="stylesheet" href="styles.css?v=20261008_3">
 </head>
 <body>
 
@@ -166,22 +166,25 @@
                     <span>активные прогулки на поводке и без</span>
                   </li>
                   <li>
-                    <strong>Кормление по вашему графику</strong>
-                    <span>сохраняем привычный рацион и время приёма пищи</span>
-                  </li>
-                  <li>
                     <strong>Круглосуточный видеоконтроль 24/7</strong>
                     <span>ваш питомец всегда под присмотром</span>
                   </li>
-                  <li>
-                    <strong>Номера под любой размер</strong>
-                    <span>просторно и комфортно как шпицу, так и крупному догу</span>
-                  </li>
-                  <li>
-                    <strong>Честная цена</strong>
-                    <span>стоимость фиксирована и не зависит от веса или породы собаки</span>
-                  </li>
+                  <div class="spoiler-hidden-content" id="roomsDogExtra">
+                    <li style="margin-top: 14px;">
+                      <strong>Кормление по вашему графику</strong>
+                      <span>сохраняем привычный рацион и время приёма пищи</span>
+                    </li>
+                    <li style="margin-top: 14px;">
+                      <strong>Номера под любой размер</strong>
+                      <span>просторно и комфортно как шпицу, так и крупному догу</span>
+                    </li>
+                    <li style="margin-top: 14px;">
+                      <strong>Честная цена</strong>
+                      <span>стоимость фиксирована и не зависит от веса или породы собаки</span>
+                    </li>
+                  </div>
                 </ul>
+                <button type="button" class="btn-spoiler-toggle" data-target="roomsDogExtra" data-text-default="Показать все условия (ещё 3) ▾" data-text-active="Скрыть условия ▴">Показать все условия (ещё 3) ▾</button>
                 <div class="rooms-prices">
                   <div class="price-item">
                     <span class="price-value">1 500 ₽</span>
@@ -233,15 +236,18 @@
                     <strong>Подстраиваемся под характер и привычки</strong>
                     <span>любит ласку — будем гладить, любит одиночество — не навязываемся</span>
                   </li>
-                  <li>
-                    <strong>Чистота и обеззараживание</strong>
-                    <span>тщательно убираем и кварцуем помещение перед каждым постояльцем</span>
-                  </li>
-                  <li>
-                    <strong>Отапливаемые номера с сетками антикошка</strong>
-                    <span>зимой тепло, летом свежий воздух</span>
-                  </li>
+                  <div class="spoiler-hidden-content" id="roomsCatExtra">
+                    <li style="margin-top: 14px;">
+                      <strong>Чистота и обеззараживание</strong>
+                      <span>тщательно убираем и кварцуем помещение перед каждым постояльцем</span>
+                    </li>
+                    <li style="margin-top: 14px;">
+                      <strong>Отапливаемые номера с сетками антикошка</strong>
+                      <span>зимой тепло, летом свежий воздух</span>
+                    </li>
+                  </div>
                 </ul>
+                <button type="button" class="btn-spoiler-toggle" data-target="roomsCatExtra" data-text-default="Показать все условия (ещё 2) ▾" data-text-active="Скрыть условия ▴">Показать все условия (ещё 2) ▾</button>
                 <div class="rooms-prices">
                   <div class="price-item">
                     <span class="price-value">1 000 ₽</span>
@@ -287,131 +293,197 @@
         <div class="training-grid">
           <!-- Карточка 1: Воспитание щенка -->
           <div class="training-card">
-            <div class="badge-sage">Воспитание щенка</div>
-            <ul class="training-bullets">
-              <li>Мягкая социализация и контакт с хозяином</li>
-              <li>Приучение к туалету, пеленке и режиму дня</li>
-              <li>Игры без укусов за руки и порчи обуви</li>
-              <li>Первые команды в лёгкой игровой форме</li>
-              <li>Занятия можно начинать с трёх месяцев</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">2 000 ₽</span>
-                <span class="t-price-sub">занятие (60 мин)</span>
-              </div>
-              <div class="training-price-row">
-                <span class="t-price">18 000 ₽</span>
-                <span class="t-price-sub">курс 10 занятий</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Воспитание щенка</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">от 2 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_puppy.png" alt="Щенок ретривера" class="peeking-dog-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>Мягкая социализация и контакт с хозяином</li>
+                <li>Приучение к туалету, пеленке и режиму дня</li>
+                <li>Игры без укусов за руки и порчи обуви</li>
+                <li>Первые команды в лёгкой игровой форме</li>
+                <li>Занятия можно начинать с трёх месяцев</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">2 000 ₽</span>
+                  <span class="t-price-sub">занятие (60 мин)</span>
+                </div>
+                <div class="training-price-row">
+                  <span class="t-price">18 000 ₽</span>
+                  <span class="t-price-sub">курс 10 занятий</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_puppy.png" alt="Щенок ретривера" class="peeking-dog-img">
+            </div>
           </div>
 
           <!-- Карточка 2: Управляемая городская собака -->
           <div class="training-card">
-            <div class="badge-sage">Управляемая городская собака</div>
-            <ul class="training-bullets">
-              <li>Спокойствие рядом с раздражителями</li>
-              <li>Игнорирование кошек, птиц и других собак</li>
-              <li>Безотказный подзыв «Ко мне»</li>
-              <li>Выдержка в кафе, зоомагазинах и парках</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">2 000 ₽</span>
-                <span class="t-price-sub">занятие (60 мин)</span>
-              </div>
-              <div class="training-price-row">
-                <span class="t-price">18 000 ₽</span>
-                <span class="t-price-sub">курс 10 занятий</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Управляемая городская собака</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">от 2 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_collie.png" alt="Бордер-колли" class="peeking-dog-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>Спокойствие рядом с раздражителями</li>
+                <li>Игнорирование кошек, птиц и других собак</li>
+                <li>Безотказный подзыв «Ко мне»</li>
+                <li>Выдержка в кафе, зоомагазинах и парках</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">2 000 ₽</span>
+                  <span class="t-price-sub">занятие (60 мин)</span>
+                </div>
+                <div class="training-price-row">
+                  <span class="t-price">18 000 ₽</span>
+                  <span class="t-price-sub">курс 10 занятий</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_collie.png" alt="Бордер-колли" class="peeking-dog-img">
+            </div>
           </div>
 
           <!-- Карточка 3: Общий курс дрессировки -->
           <div class="training-card">
-            <div class="badge-sage">Общий курс дрессировки</div>
-            <ul class="training-bullets">
-              <li>Четкое выполнение «Рядом», «Сидеть», «Лежать»</li>
-              <li>Управление жестами и голосом на расстоянии</li>
-              <li>Апортировка предметов и преодоление снарядов</li>
-              <li>Железная выдержка и проверка на норматив</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">2 000 ₽</span>
-                <span class="t-price-sub">занятие (60 мин)</span>
-              </div>
-              <div class="training-price-row">
-                <span class="t-price">18 000 ₽</span>
-                <span class="t-price-sub">курс 10 занятий</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Общий курс дрессировки</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">от 2 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_shepherd.png" alt="Немецкая овчарка" class="peeking-dog-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>Четкое выполнение «Рядом», «Сидеть», «Лежать»</li>
+                <li>Управление жестами и голосом на расстоянии</li>
+                <li>Апортировка предметов и преодоление снарядов</li>
+                <li>Железная выдержка и проверка на норматив</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">2 000 ₽</span>
+                  <span class="t-price-sub">занятие (60 мин)</span>
+                </div>
+                <div class="training-price-row">
+                  <span class="t-price">18 000 ₽</span>
+                  <span class="t-price-sub">курс 10 занятий</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_shepherd.png" alt="Немецкая овчарка" class="peeking-dog-img">
+            </div>
           </div>
 
           <!-- Карточка 4: Трюки -->
           <div class="training-card">
-            <div class="badge-sage">Трюки</div>
-            <ul class="training-bullets">
-              <li>«Зайка», «змейка», кувырки, поклон и кружение</li>
-              <li>Развитие баланса, гибкости и координации</li>
-              <li>Ментальная разгрузка гиперактивных хвостиков</li>
-              <li>Море радости и укрепление доверия к человеку</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">2 000 ₽</span>
-                <span class="t-price-sub">занятие (60 мин)</span>
-              </div>
-              <div class="training-price-row">
-                <span class="t-price">18 000 ₽</span>
-                <span class="t-price-sub">курс 10 занятий</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Трюки</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">от 2 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_aussie.png" alt="Аусси" class="peeking-dog-img aussie-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>«Зайка», «змейка», кувырки, поклон и кружение</li>
+                <li>Развитие баланса, гибкости и координации</li>
+                <li>Ментальная разгрузка гиперактивных хвостиков</li>
+                <li>Море радости и укрепление доверия к человеку</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">2 000 ₽</span>
+                  <span class="t-price-sub">занятие (60 мин)</span>
+                </div>
+                <div class="training-price-row">
+                  <span class="t-price">18 000 ₽</span>
+                  <span class="t-price-sub">курс 10 занятий</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_aussie.png" alt="Аусси" class="peeking-dog-img aussie-img">
+            </div>
           </div>
 
           <!-- Карточка 5: Бытовая дрессировка -->
           <div class="training-card">
-            <div class="badge-sage">Бытовая дрессировка</div>
-            <ul class="training-bullets">
-              <li>Отучение натягивать поводок на прогулке</li>
-              <li>Запрет подбора с земли и команда «Фу»</li>
-              <li>Спокойное поведение дома без воя и лая</li>
-              <li>Адекватная реакция на гостей и звонок в дверь</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">2 000 ₽</span>
-                <span class="t-price-sub">занятие (60 мин)</span>
-              </div>
-              <div class="training-price-row">
-                <span class="t-price">18 000 ₽</span>
-                <span class="t-price-sub">курс 10 занятий</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Бытовая дрессировка</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">от 2 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_corgi.png" alt="Корги" class="peeking-dog-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>Отучение натягивать поводок на прогулке</li>
+                <li>Запрет подбора с земли и команда «Фу»</li>
+                <li>Спокойное поведение дома без воя и лая</li>
+                <li>Адекватная реакция на гостей и звонок в дверь</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">2 000 ₽</span>
+                  <span class="t-price-sub">занятие (60 мин)</span>
+                </div>
+                <div class="training-price-row">
+                  <span class="t-price">18 000 ₽</span>
+                  <span class="t-price-sub">курс 10 занятий</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_corgi.png" alt="Корги" class="peeking-dog-img">
+            </div>
           </div>
 
           <!-- Карточка 6: Онлайн-консультация -->
           <div class="training-card">
-            <div class="badge-sage">Онлайн-консультация</div>
-            <ul class="training-bullets">
-              <li>Разбор тревожащего поведения по видео или аудио</li>
-              <li>Пошаговый план решения вашей проблемы</li>
-              <li>Ответы на вопросы по питанию, выгулу и стрессу</li>
-              <li>Подходит, если вы далеко или нужно срочно</li>
-            </ul>
-            <div class="training-prices">
-              <div class="training-price-row">
-                <span class="t-price">1 000 ₽</span>
-                <span class="t-price-sub">созвон (30 - 60 мин)</span>
+            <div class="training-card-header">
+              <div class="badge-sage">Онлайн-консультация</div>
+              <div class="training-card-mobile-preview">
+                <span class="t-price-preview">1 000 ₽</span>
+                <span class="chevron-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
               </div>
             </div>
-            <img src="images/dog_exact_headphones.png" alt="Собака в наушниках" class="peeking-dog-img">
+            <div class="training-card-body">
+              <ul class="training-bullets">
+                <li>Разбор тревожащего поведения по видео или аудио</li>
+                <li>Пошаговый план решения вашей проблемы</li>
+                <li>Ответы на вопросы по питанию, выгулу и стрессу</li>
+                <li>Подходит, если вы далеко или нужно срочно</li>
+              </ul>
+              <div class="training-prices">
+                <div class="training-price-row">
+                  <span class="t-price">1 000 ₽</span>
+                  <span class="t-price-sub">созвон (30 - 60 мин)</span>
+                </div>
+              </div>
+              <a href="#contacts" class="btn-primary training-card-mobile-btn">Связаться с кинологом</a>
+              <img src="images/dog_exact_headphones.png" alt="Собака в наушниках" class="peeking-dog-img">
+            </div>
           </div>
         </div>
 
@@ -438,12 +510,15 @@
             <h3 class="photo-card-title">История любви человека и собаки</h3>
             <div class="photo-split">
               <div class="photo-info">
-                <ul class="photo-features">
-                  <li>25 - 30 фото в авторской ретуши</li>
-                  <li>Вы гуляете и обнимаетесь - я ловлю моменты</li>
-                  <li>Не нужно позировать и знать команды</li>
-                  <li>Готовые фото всего через 7 дней</li>
-                </ul>
+                <div class="spoiler-hidden-content photo-spoiler-content" id="photoFeatures1">
+                  <ul class="photo-features">
+                    <li>25 - 30 фото в авторской ретуши</li>
+                    <li>Вы гуляете и обнимаетесь - я ловлю моменты</li>
+                    <li>Не нужно позировать и знать команды</li>
+                    <li>Готовые фото всего через 7 дней</li>
+                  </ul>
+                </div>
+                <button type="button" class="btn-spoiler-toggle photo-spoiler-btn" data-target="photoFeatures1" data-text-default="Что входит в съёмку (4 пункта) ▾" data-text-active="Скрыть условия ▴">Что входит в съёмку (4 пункта) ▾</button>
                 <div class="photo-prices">
                   <div class="price-row">
                     <span class="price-main">8 000 ₽</span>
@@ -476,12 +551,15 @@
             <h3 class="photo-card-title">Пиарная фотосессия для пристройства</h3>
             <div class="photo-split">
               <div class="photo-info">
-                <ul class="photo-features">
-                  <li>10 - 15 фото в авторской ретуши</li>
-                  <li>Никакого принуждения и насилия – ловлю моменты</li>
-                  <li>Любую, даже самую гиперактивную собаку или кошку сфотографируем красиво:)</li>
-                  <li>Готовый результат через 3 дня</li>
-                </ul>
+                <div class="spoiler-hidden-content photo-spoiler-content" id="photoFeatures2">
+                  <ul class="photo-features">
+                    <li>10 - 15 фото в авторской ретуши</li>
+                    <li>Никакого принуждения и насилия – ловлю моменты</li>
+                    <li>Любую, даже самую гиперактивную собаку или кошку сфотографируем красиво:)</li>
+                    <li>Готовый результат через 3 дня</li>
+                  </ul>
+                </div>
+                <button type="button" class="btn-spoiler-toggle photo-spoiler-btn" data-target="photoFeatures2" data-target-text="Что входит в съёмку (4 пункта) ▾" data-text-default="Что входит в съёмку (4 пункта) ▾" data-text-active="Скрыть условия ▴">Что входит в съёмку (4 пункта) ▾</button>
                 <div class="photo-prices-stacked">
                   <div class="price-stack-item">
                     <div class="price-main">3 500 ₽</div>
@@ -519,12 +597,15 @@
             <h3 class="photo-card-title">Фотосессия для собак из приютов</h3>
             <div class="photo-split">
               <div class="photo-info">
-                <ul class="photo-features">
-                  <li>5 фото в ретуши на хвост</li>
-                  <li>Выезд в приют от 10 собак</li>
-                  <li>Обязательно присутствие двух помощников</li>
-                  <li>Готовые фото через 7-10 дней</li>
-                </ul>
+                <div class="spoiler-hidden-content photo-spoiler-content" id="photoFeatures3">
+                  <ul class="photo-features">
+                    <li>5 фото в ретуши на хвост</li>
+                    <li>Выезд в приют от 10 собак</li>
+                    <li>Обязательно присутствие двух помощников</li>
+                    <li>Готовые фото через 7-10 дней</li>
+                  </ul>
+                </div>
+                <button type="button" class="btn-spoiler-toggle photo-spoiler-btn" data-target="photoFeatures3" data-text-default="Что входит в съёмку (4 пункта) ▾" data-text-active="Скрыть условия ▴">Что входит в съёмку (4 пункта) ▾</button>
                 <div class="photo-prices-stacked">
                   <div class="price-stack-item">
                     <div class="price-main">6 500 ₽</div>
@@ -942,51 +1023,89 @@
           <!-- Левая колонка: Карточки кураторов -->
           <div class="curator-cards">
             <!-- Куратор: Людмила -->
-            <div class="curator-card">
-              <div class="curator-info">
-                <h3 class="curator-name">Людмила</h3>
-                <a href="tel:+79165276461" class="curator-phone">+7 (916) - 527 - 64 - 61</a>
-                <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
-                <div class="curator-exp">Опыт работы с собаками более 20 лет</div>
-                <div class="curator-messengers">
-                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
-                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+            <div class="curator-card person-card">
+              <div class="person-card-header">
+                <div class="curator-preview-left">
+                  <img src="images/ludmila_exact.png" alt="Куратор Людмила" class="curator-avatar-mini">
+                  <div class="curator-title-wrap">
+                    <h3>Людмила</h3>
+                    <span class="curator-subtitle-mini">Собаки & Кинолог</span>
+                  </div>
                 </div>
-                <div class="curator-tags-stacked">
-                  <div class="tag-row">
-                    <span class="tag-terracotta">Зоогостиница для собак</span>
-                  </div>
-                  <div class="tag-row tag-row-split">
-                    <span class="tag-terracotta">Кинолог</span>
-                    <span class="curator-location">Московская обл, Раменский р-н, СНТ ЛУЧ</span>
-                  </div>
+                <div class="curator-quick-actions">
+                  <a href="tel:+79165276461" class="btn-call-circle" aria-label="Позвонить Людмиле">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  </a>
+                  <span class="chevron-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
                 </div>
               </div>
-              <img src="images/ludmila_exact.png" alt="Куратор Людмила" class="curator-photo">
+              <div class="curator-card-body">
+                <div class="curator-info">
+                  <h3 class="curator-name">Людмила</h3>
+                  <a href="tel:+79165276461" class="curator-phone">+7 (916) - 527 - 64 - 61</a>
+                  <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
+                  <div class="curator-exp">Опыт работы с собаками более 20 лет</div>
+                  <div class="curator-messengers">
+                    <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
+                    <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+                  </div>
+                  <div class="curator-tags-stacked">
+                    <div class="tag-row">
+                      <span class="tag-terracotta">Зоогостиница для собак</span>
+                    </div>
+                    <div class="tag-row tag-row-split">
+                      <span class="tag-terracotta">Кинолог</span>
+                      <span class="curator-location">Московская обл, Раменский р-н, СНТ ЛУЧ</span>
+                    </div>
+                  </div>
+                </div>
+                <img src="images/ludmila_exact.png" alt="Куратор Людмила" class="curator-photo">
+              </div>
             </div>
 
             <!-- Куратор: Виктория -->
-            <div class="curator-card">
-              <div class="curator-info">
-                <h3 class="curator-name">Виктория</h3>
-                <a href="tel:+79269255240" class="curator-phone">+7 (926) - 925 - 52 - 40</a>
-                <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
-                <div class="curator-exp">Опыт работы с кошками более 10 лет<br>Профессионально занимаюсь фото 7+ лет</div>
-                <div class="curator-messengers">
-                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
-                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+            <div class="curator-card person-card">
+              <div class="person-card-header">
+                <div class="curator-preview-left">
+                  <img src="images/victoria_exact.png" alt="Куратор Виктория" class="curator-avatar-mini">
+                  <div class="curator-title-wrap">
+                    <h3>Виктория</h3>
+                    <span class="curator-subtitle-mini">Кошки & Фотограф</span>
+                  </div>
                 </div>
-                <div class="curator-tags-stacked">
-                  <div class="tag-row">
-                    <span class="tag-terracotta">Зоогостиница для кошек</span>
-                  </div>
-                  <div class="tag-row tag-row-split">
-                    <span class="tag-terracotta">Фотограф</span>
-                    <span class="curator-location">Московская обл, Раменский р-н, СНТ Учитель</span>
-                  </div>
+                <div class="curator-quick-actions">
+                  <a href="tel:+79269255240" class="btn-call-circle" aria-label="Позвонить Виктории">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  </a>
+                  <span class="chevron-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
                 </div>
               </div>
-              <img src="images/victoria_exact.png" alt="Куратор Виктория" class="curator-photo">
+              <div class="curator-card-body">
+                <div class="curator-info">
+                  <h3 class="curator-name">Виктория</h3>
+                  <a href="tel:+79269255240" class="curator-phone">+7 (926) - 925 - 52 - 40</a>
+                  <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
+                  <div class="curator-exp">Опыт работы с кошками более 10 лет<br>Профессионально занимаюсь фото 7+ лет</div>
+                  <div class="curator-messengers">
+                    <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
+                    <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+                  </div>
+                  <div class="curator-tags-stacked">
+                    <div class="tag-row">
+                      <span class="tag-terracotta">Зоогостиница для кошек</span>
+                    </div>
+                    <div class="tag-row tag-row-split">
+                      <span class="tag-terracotta">Фотограф</span>
+                      <span class="curator-location">Московская обл, Раменский р-н, СНТ Учитель</span>
+                    </div>
+                  </div>
+                </div>
+                <img src="images/victoria_exact.png" alt="Куратор Виктория" class="curator-photo">
+              </div>
             </div>
           </div>
 
@@ -1052,6 +1171,6 @@
     <span class="back-to-top-text">Наверх</span>
   </button>
 
-  <script src="script.js?v=20261008_2"></script>
+  <script src="script.js?v=20261008_3"></script>
 </body>
 </html>

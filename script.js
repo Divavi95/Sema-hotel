@@ -218,7 +218,7 @@ function initMobileMenu() {
 }
 
 /* =========================================================
-   FAQ ACCORDION
+   FAQ & MOBILE ACCORDIONS
    ========================================================= */
 function initFaqAccordion() {
   document.querySelectorAll('.faq-accordion-item').forEach(item => {
@@ -252,6 +252,55 @@ function initFaqAccordion() {
         btn.setAttribute('aria-expanded', 'true');
         collapse.style.maxHeight = (collapse.scrollHeight + 30) + 'px';
       }
+    });
+  });
+}
+
+function initMobileAccordionsAndSpoilers() {
+  // 1. Дрессировка (аккордеон 6 карточек на смартфонах)
+  const trainingCards = document.querySelectorAll('.training-card');
+  trainingCards.forEach(card => {
+    const header = card.querySelector('.training-card-header') || card;
+    header.addEventListener('click', (e) => {
+      if (window.innerWidth > 768) return;
+      if (e.target.closest('a')) return;
+
+      const isOpen = card.classList.contains('is-open');
+      trainingCards.forEach(other => other.classList.remove('is-open'));
+      if (!isOpen) {
+        card.classList.add('is-open');
+      }
+    });
+  });
+
+  // 2. Кураторы (аккордеон визиток Людмилы и Виктории)
+  const curatorCards = document.querySelectorAll('.person-card');
+  curatorCards.forEach(card => {
+    const header = card.querySelector('.person-card-header') || card;
+    header.addEventListener('click', (e) => {
+      if (window.innerWidth > 768) return;
+      // Не перехватываем клик по прямой ссылке звонка tel:
+      if (e.target.closest('a[href^="tel:"]') || e.target.closest('.btn-call-circle')) return;
+
+      const isOpen = card.classList.contains('is-open');
+      curatorCards.forEach(other => other.classList.remove('is-open'));
+      if (!isOpen) {
+        card.classList.add('is-open');
+      }
+    });
+  });
+
+  // 3. Спойлеры для условий номеров и деталей фотосессий
+  document.querySelectorAll('.btn-spoiler-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+      const content = document.getElementById(targetId);
+      if (!content) return;
+
+      const isExpanded = content.classList.toggle('is-open');
+      const defaultText = btn.dataset.textDefault || 'Показать все условия ▾';
+      const activeText = btn.dataset.textActive || 'Скрыть условия ▴';
+      btn.textContent = isExpanded ? activeText : defaultText;
     });
   });
 }
@@ -494,9 +543,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initSliders();
   initMobileMenu();
   initFaqAccordion();
+  initMobileAccordionsAndSpoilers();
   initStarRating();
   initForms();
   initCallDropdown();
   initBackToTop();
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    document.querySelectorAll('.is-open').forEach(el => {
+      // Don't close FAQ answers if opened by user on desktop
+      if (!el.classList.contains('faq-accordion-item')) {
+        el.classList.remove('is-open');
+      }
+    });
+    document.body.style.overflow = '';
+  }
 });
 
