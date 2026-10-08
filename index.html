@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Зоогостиница и кинологический центр «Сёма»</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261008_1">
+</head>
+<body>
+
+  <!-- Блок 1. Шапка (Header) -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Логотип -->
+        <a href="#header" class="header-logo" aria-label="Зоогостиница Сёма - на главную">
+          <img src="images/logo_clean_full.png" alt="Зоогостиница «Сёма»">
+        </a>
+
+        <!-- Навигация -->
+        <nav class="header-nav" id="headerNav" aria-label="Основная навигация">
+          <ul class="nav-list">
+            <li><a href="#rooms" class="nav-link">Номера</a></li>
+            <li><a href="#training" class="nav-link">Дрессировка</a></li>
+            <li><a href="#photoshoot" class="nav-link">Услуги фотографа</a></li>
+            <li><a href="#faq" class="nav-link">FAQ</a></li>
+            <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+            <li><a href="#contacts" class="nav-link">Контакты</a></li>
+          </ul>
+
+          <!-- Контакты внутри мобильного меню -->
+          <div class="nav-mobile-contacts">
+            <div class="mobile-contact-title">Связаться с нами:</div>
+            <a href="tel:+79165276461" class="mobile-contact-link">
+              <span>🐶 Филиал для собак (Людмила)</span>
+              <strong>+7 (916) 527-64-61</strong>
+            </a>
+            <a href="tel:+79269255240" class="mobile-contact-link">
+              <span>🐱 Филиал для кошек (Виктория)</span>
+              <strong>+7 (926) 925-52-40</strong>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Затемняющий оверлей для мобильного меню -->
+        <div class="menu-backdrop" id="menuBackdrop"></div>
+
+        <!-- Кнопка Позвонить (бейдж с выпадающим выбором филиала) -->
+        <div class="header-call-dropdown" id="headerCallDropdown">
+          <button class="header-call-badge" id="callBadgeBtn" aria-expanded="false" aria-label="Позвонить в отель">
+            <svg class="call-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span class="call-badge-text">Позвонить</span>
+            <svg class="call-badge-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- Выпадающее меню с выбором филиала -->
+          <div class="call-menu" id="callMenu">
+            <a href="tel:+79165276461" class="call-menu-item">
+              <span class="call-item-icon">🐶</span>
+              <div class="call-item-info">
+                <span class="call-item-title">Филиал для собак</span>
+                <span class="call-item-phone">+7 (916) 527-64-61</span>
+                <span class="call-item-name">Куратор Людмила</span>
+              </div>
+            </a>
+            <div class="call-menu-divider"></div>
+            <a href="tel:+79269255240" class="call-menu-item">
+              <span class="call-item-icon">🐱</span>
+              <div class="call-item-info">
+                <span class="call-item-title">Филиал для кошек</span>
+                <span class="call-item-phone">+7 (926) 925-52-40</span>
+                <span class="call-item-name">Куратор Виктория</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Кнопка мобильного меню -->
+        <button class="mobile-menu-btn" aria-label="Открыть меню" id="mobileMenuBtn">
+          <svg class="burger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line class="line-1" x1="3" y1="6" x2="21" y2="6"></line>
+            <line class="line-2" x1="3" y1="12" x2="21" y2="12"></line>
+            <line class="line-3" x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Блок 2. Главный экран (Hero) -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <!-- Заголовок и подзаголовок -->
+        <div class="hero-header">
+          <h1 class="hero-title">Зоогостиница «Сёма»</h1>
+          <p class="hero-subtitle">С заботой, как дома</p>
+        </div>
+
+        <!-- Сетка карточек -->
+        <div class="hero-grid">
+          <!-- Карточка: Для собак -->
+          <div class="hero-card">
+            <h2 class="hero-card-title">Для собак</h2>
+            <p class="hero-card-desc">Выгул в лесу,<br>индивидуальный подход</p>
+            <a href="#rooms" class="hero-card-btn">Подробнее об условиях</a>
+            <div class="hero-card-img-wrap dog-wrap">
+              <img src="images/hero_dog_exact_mock.png" alt="Овчарка" class="hero-card-img">
+            </div>
+          </div>
+
+          <!-- Карточка: Для кошек -->
+          <div class="hero-card">
+            <h2 class="hero-card-title">Для кошек</h2>
+            <p class="hero-card-desc">Просторные номера<br>и никаких клеток</p>
+            <a href="#rooms" class="hero-card-btn">Подробнее об условиях</a>
+            <div class="hero-card-img-wrap cat-wrap">
+              <img src="images/hero_cat_exact_mock.png" alt="Кот" class="hero-card-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- Кнопка перехода к бронированию -->
+        <div class="hero-cta">
+          <a href="#contacts" class="btn-primary">Перейти к бронированию</a>
+        </div>
+      </div>
+    </section>
+    <!-- Блок 3. Номера и стоимость проживания -->
+    <section class="rooms-section" id="rooms">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Номера и стоимость проживания</h2>
+          <p class="section-subtitle">Комфортные условия без стресса для вашего любимца</p>
+        </div>
+
+        <!-- Переключатель -->
+        <div class="tab-switcher">
+          <button class="tab-btn active" data-tab="dogs">Собаки</button>
+          <button class="tab-btn" data-tab="cats">Кошки</button>
+        </div>
+
+        <!-- Контент карточки -->
+        <div class="rooms-card">
+
+          <!-- === СОБАКИ === -->
+          <div class="rooms-content active" id="tab-dogs">
+            <div class="rooms-split">
+              <!-- Левая колонка: текст -->
+              <div class="rooms-info">
+                <h3 class="rooms-card-title">Комнаты и вольеры для любых пород и размеров</h3>
+                <ul class="rooms-features">
+                  <li>
+                    <strong>Выгул в лесу или на огороженной территории</strong>
+                    <span>активные прогулки на поводке и без</span>
+                  </li>
+                  <li>
+                    <strong>Кормление по вашему графику</strong>
+                    <span>сохраняем привычный рацион и время приёма пищи</span>
+                  </li>
+                  <li>
+                    <strong>Круглосуточный видеоконтроль 24/7</strong>
+                    <span>ваш питомец всегда под присмотром</span>
+                  </li>
+                  <li>
+                    <strong>Номера под любой размер</strong>
+                    <span>просторно и комфортно как шпицу, так и крупному догу</span>
+                  </li>
+                  <li>
+                    <strong>Честная цена</strong>
+                    <span>стоимость фиксирована и не зависит от веса или породы собаки</span>
+                  </li>
+                </ul>
+                <div class="rooms-prices">
+                  <div class="price-item">
+                    <span class="price-value">1 500 ₽</span>
+                    <span class="price-unit">/ сутки</span>
+                    <span class="price-desc">стандартное проживание и уход</span>
+                  </div>
+                  <div class="price-item">
+                    <span class="price-value">3 500 ₽</span>
+                    <span class="price-unit">/ сутки</span>
+                    <span class="price-desc">проживание + курс дрессировки у кинолога</span>
+                  </div>
+                </div>
+                <a href="#contacts" class="btn-primary rooms-btn">Забронировать номер</a>
+              </div>
+
+              <!-- Правая колонка: карусель -->
+              <div class="rooms-slider">
+                <div class="slider-track" id="dogSlider">
+                  <div class="slide active">
+                    <img src="images/room_dog_pristine.png" alt="Номер для собаки">
+                  </div>
+                  <div class="slide">
+                    <img src="images/room_dog2_pristine.png" alt="Собака на территории">
+                  </div>
+                </div>
+                <button class="slider-arrow prev" data-slider="dogSlider">&#8249;</button>
+                <button class="slider-arrow next" data-slider="dogSlider">&#8250;</button>
+                <div class="slider-dots" id="dogDots">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- === КОШКИ === -->
+          <div class="rooms-content" id="tab-cats">
+            <div class="rooms-split">
+              <!-- Левая колонка: текст -->
+              <div class="rooms-info">
+                <h3 class="rooms-card-title">Свобода в движении в просторных комнатах</h3>
+                <ul class="rooms-features">
+                  <li>
+                    <strong>Лежанка, миски, лотки, игрушки — всё есть</strong>
+                    <span>но можно привезти и своё</span>
+                  </li>
+                  <li>
+                    <strong>Подстраиваемся под характер и привычки</strong>
+                    <span>любит ласку — будем гладить, любит одиночество — не навязываемся</span>
+                  </li>
+                  <li>
+                    <strong>Чистота и обеззараживание</strong>
+                    <span>тщательно убираем и кварцуем помещение перед каждым постояльцем</span>
+                  </li>
+                  <li>
+                    <strong>Отапливаемые номера с сетками антикошка</strong>
+                    <span>зимой тепло, летом свежий воздух</span>
+                  </li>
+                </ul>
+                <div class="rooms-prices">
+                  <div class="price-item">
+                    <span class="price-value">1 000 ₽</span>
+                    <span class="price-unit">/ сутки</span>
+                    <span class="price-desc">стандартное проживание и уход + ваш корм</span>
+                  </div>
+                </div>
+                <a href="#contacts" class="btn-primary rooms-btn">Забронировать номер</a>
+              </div>
+
+              <!-- Правая колонка: карусель -->
+              <div class="rooms-slider">
+                <div class="slider-track" id="catSlider">
+                  <div class="slide active">
+                    <img src="images/room_cat_pristine.png" alt="Кот в номере">
+                  </div>
+                  <div class="slide">
+                    <img src="images/room-cat-1.png" alt="Номер для кошки">
+                  </div>
+                </div>
+                <button class="slider-arrow prev" data-slider="catSlider">&#8249;</button>
+                <button class="slider-arrow next" data-slider="catSlider">&#8250;</button>
+                <div class="slider-dots" id="catDots">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.rooms-card -->
+      </div>
+    </section>
+
+    <!-- Блок 4. Дрессировка собак -->
+    <section class="training-section" id="training">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Дрессировка собак</h2>
+        </div>
+
+        <div class="training-grid">
+          <!-- Карточка 1: Воспитание щенка -->
+          <div class="training-card">
+            <div class="badge-sage">Воспитание щенка</div>
+            <ul class="training-bullets">
+              <li>Мягкая социализация и контакт с хозяином</li>
+              <li>Приучение к туалету, пеленке и режиму дня</li>
+              <li>Игры без укусов за руки и порчи обуви</li>
+              <li>Первые команды в лёгкой игровой форме</li>
+              <li>Занятия можно начинать с трёх месяцев</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">2 000 ₽</span>
+                <span class="t-price-sub">занятие (60 мин)</span>
+              </div>
+              <div class="training-price-row">
+                <span class="t-price">18 000 ₽</span>
+                <span class="t-price-sub">курс 10 занятий</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_puppy.png" alt="Щенок ретривера" class="peeking-dog-img">
+          </div>
+
+          <!-- Карточка 2: Управляемая городская собака -->
+          <div class="training-card">
+            <div class="badge-sage">Управляемая городская собака</div>
+            <ul class="training-bullets">
+              <li>Спокойствие рядом с раздражителями</li>
+              <li>Игнорирование кошек, птиц и других собак</li>
+              <li>Безотказный подзыв «Ко мне»</li>
+              <li>Выдержка в кафе, зоомагазинах и парках</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">2 000 ₽</span>
+                <span class="t-price-sub">занятие (60 мин)</span>
+              </div>
+              <div class="training-price-row">
+                <span class="t-price">18 000 ₽</span>
+                <span class="t-price-sub">курс 10 занятий</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_collie.png" alt="Бордер-колли" class="peeking-dog-img">
+          </div>
+
+          <!-- Карточка 3: Общий курс дрессировки -->
+          <div class="training-card">
+            <div class="badge-sage">Общий курс дрессировки</div>
+            <ul class="training-bullets">
+              <li>Четкое выполнение «Рядом», «Сидеть», «Лежать»</li>
+              <li>Управление жестами и голосом на расстоянии</li>
+              <li>Апортировка предметов и преодоление снарядов</li>
+              <li>Железная выдержка и проверка на норматив</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">2 000 ₽</span>
+                <span class="t-price-sub">занятие (60 мин)</span>
+              </div>
+              <div class="training-price-row">
+                <span class="t-price">18 000 ₽</span>
+                <span class="t-price-sub">курс 10 занятий</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_shepherd.png" alt="Немецкая овчарка" class="peeking-dog-img">
+          </div>
+
+          <!-- Карточка 4: Трюки -->
+          <div class="training-card">
+            <div class="badge-sage">Трюки</div>
+            <ul class="training-bullets">
+              <li>«Зайка», «змейка», кувырки, поклон и кружение</li>
+              <li>Развитие баланса, гибкости и координации</li>
+              <li>Ментальная разгрузка гиперактивных хвостиков</li>
+              <li>Море радости и укрепление доверия к человеку</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">2 000 ₽</span>
+                <span class="t-price-sub">занятие (60 мин)</span>
+              </div>
+              <div class="training-price-row">
+                <span class="t-price">18 000 ₽</span>
+                <span class="t-price-sub">курс 10 занятий</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_aussie.png" alt="Аусси" class="peeking-dog-img aussie-img">
+          </div>
+
+          <!-- Карточка 5: Бытовая дрессировка -->
+          <div class="training-card">
+            <div class="badge-sage">Бытовая дрессировка</div>
+            <ul class="training-bullets">
+              <li>Отучение натягивать поводок на прогулке</li>
+              <li>Запрет подбора с земли и команда «Фу»</li>
+              <li>Спокойное поведение дома без воя и лая</li>
+              <li>Адекватная реакция на гостей и звонок в дверь</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">2 000 ₽</span>
+                <span class="t-price-sub">занятие (60 мин)</span>
+              </div>
+              <div class="training-price-row">
+                <span class="t-price">18 000 ₽</span>
+                <span class="t-price-sub">курс 10 занятий</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_corgi.png" alt="Корги" class="peeking-dog-img">
+          </div>
+
+          <!-- Карточка 6: Онлайн-консультация -->
+          <div class="training-card">
+            <div class="badge-sage">Онлайн-консультация</div>
+            <ul class="training-bullets">
+              <li>Разбор тревожащего поведения по видео или аудио</li>
+              <li>Пошаговый план решения вашей проблемы</li>
+              <li>Ответы на вопросы по питанию, выгулу и стрессу</li>
+              <li>Подходит, если вы далеко или нужно срочно</li>
+            </ul>
+            <div class="training-prices">
+              <div class="training-price-row">
+                <span class="t-price">1 000 ₽</span>
+                <span class="t-price-sub">созвон (30 - 60 мин)</span>
+              </div>
+            </div>
+            <img src="images/dog_exact_headphones.png" alt="Собака в наушниках" class="peeking-dog-img">
+          </div>
+        </div>
+
+        <div class="training-cta">
+          <a href="#contacts" class="btn-primary">Связаться с кинологом</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК 5: Фотосессии -->
+    <section class="section photoshoot-section" id="photoshoots">
+      <div class="container">
+        <h2 class="section-title section-title-center">Фотосессии</h2>
+
+        <div class="tab-switcher">
+          <button class="tab-btn active" data-tab="photo-1">Хозяин + хвостик</button>
+          <button class="tab-btn" data-tab="photo-2">Пиарная фотосессия</button>
+          <button class="tab-btn" data-tab="photo-3">Съёмка в приюте</button>
+        </div>
+
+        <!-- Таб 1: Хозяин + хвостик -->
+        <div class="photo-content active" id="tab-photo-1">
+          <div class="photo-card">
+            <h3 class="photo-card-title">История любви человека и собаки</h3>
+            <div class="photo-split">
+              <div class="photo-info">
+                <ul class="photo-features">
+                  <li>25 - 30 фото в авторской ретуши</li>
+                  <li>Вы гуляете и обнимаетесь - я ловлю моменты</li>
+                  <li>Не нужно позировать и знать команды</li>
+                  <li>Готовые фото всего через 7 дней</li>
+                </ul>
+                <div class="photo-prices">
+                  <div class="price-row">
+                    <span class="price-main">8 000 ₽</span>
+                  </div>
+                </div>
+                <a href="#contacts" class="btn-primary photo-btn">Связаться с фотографом</a>
+              </div>
+              <div class="photo-slider-wrap">
+                <div class="photo-slider rooms-slider">
+                  <button class="slider-arrow next" aria-label="Следующее фото">›</button>
+                  <div class="slider-track" id="photoSlider1">
+                    <div class="slide active">
+                      <img src="images/photoshoot_crosswalk.png" alt="История любви человека и собаки" class="slider-img">
+                    </div>
+                  </div>
+                </div>
+                <div class="photo-slider-dots" id="photoDots1">
+                  <span class="p-dot active"></span>
+                  <span class="p-dot"></span>
+                  <span class="p-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Таб 2: Пиарная фотосессия -->
+        <div class="photo-content" id="tab-photo-2">
+          <div class="photo-card">
+            <h3 class="photo-card-title">Пиарная фотосессия для пристройства</h3>
+            <div class="photo-split">
+              <div class="photo-info">
+                <ul class="photo-features">
+                  <li>10 - 15 фото в авторской ретуши</li>
+                  <li>Никакого принуждения и насилия – ловлю моменты</li>
+                  <li>Любую, даже самую гиперактивную собаку или кошку сфотографируем красиво:)</li>
+                  <li>Готовый результат через 3 дня</li>
+                </ul>
+                <div class="photo-prices-stacked">
+                  <div class="price-stack-item">
+                    <div class="price-main">3 500 ₽</div>
+                    <div class="price-sub-caption">собаки</div>
+                  </div>
+                  <div class="price-stack-item">
+                    <div class="price-main">2 000 ₽</div>
+                    <div class="price-sub-caption">кошки</div>
+                  </div>
+                </div>
+                <a href="#contacts" class="btn-primary photo-btn">Связаться с фотографом</a>
+              </div>
+              <div class="photo-slider-wrap">
+                <div class="photo-slider rooms-slider">
+                  <button class="slider-arrow next" aria-label="Следующее фото">›</button>
+                  <div class="slider-track" id="photoSlider2">
+                    <div class="slide active">
+                      <img src="images/photoshoot_needles_web.jpg" alt="Пиарная фотосессия для пристройства" class="slider-img">
+                    </div>
+                  </div>
+                </div>
+                <div class="photo-slider-dots" id="photoDots2">
+                  <span class="p-dot active"></span>
+                  <span class="p-dot"></span>
+                  <span class="p-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Таб 3: Съёмка в приюте -->
+        <div class="photo-content" id="tab-photo-3">
+          <div class="photo-card">
+            <h3 class="photo-card-title">Фотосессия для собак из приютов</h3>
+            <div class="photo-split">
+              <div class="photo-info">
+                <ul class="photo-features">
+                  <li>5 фото в ретуши на хвост</li>
+                  <li>Выезд в приют от 10 собак</li>
+                  <li>Обязательно присутствие двух помощников</li>
+                  <li>Готовые фото через 7-10 дней</li>
+                </ul>
+                <div class="photo-prices-stacked">
+                  <div class="price-stack-item">
+                    <div class="price-main">6 500 ₽</div>
+                    <div class="price-sub-caption">50 фото</div>
+                  </div>
+                </div>
+                <a href="#contacts" class="btn-primary photo-btn">Связаться с фотографом</a>
+              </div>
+              <div class="photo-slider-wrap">
+                <div class="photo-slider rooms-slider">
+                  <button class="slider-arrow prev" aria-label="Предыдущее фото">‹</button>
+                  <button class="slider-arrow next" aria-label="Следующее фото">›</button>
+                  <div class="slider-track" id="photoSlider3">
+                    <div class="slide active">
+                      <img src="images/photoshoot_black_pup.png" alt="Фотосессия для собак из приютов" class="slider-img">
+                    </div>
+                  </div>
+                </div>
+                <div class="photo-slider-dots" id="photoDots3">
+                  <span class="p-dot active"></span>
+                  <span class="p-dot"></span>
+                  <span class="p-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- БЛОК 6: FAQ (Часто задаваемые вопросы) -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <h2 class="section-title section-title-center">Ответы на частозадаваемые вопросы</h2>
+
+        <div class="tab-switcher">
+          <button class="tab-btn active" data-tab="faq-dogs">Собаки</button>
+          <button class="tab-btn" data-tab="faq-cats">Кошки</button>
+        </div>
+
+        <!-- Таб FAQ: Собаки -->
+        <div class="faq-content active" id="tab-faq-dogs">
+          <div class="faq-accordion-list">
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Сколько раз и где выгуливают собак?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Выгул проходит 2–3 раза в день по привычному для собаки графику. Гуляем на собственной огороженной территории или по безопасному лесному маршруту на поводке или без — по согласованию с вами.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Что обязательно иметь с собой при заезде?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Ветеринарный паспорт с действующими комплексными прививками и бешенством (сделанными не ранее 14 дней и не позднее 1 года до заезда), отметку об обработке от паразитов, амуницию и запас корма.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Будет ли моя собака контактировать с другими животными?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Только с вашего предварительного согласия. Дружелюбные собаки могут играть вместе под постоянным контролем кинолога. Если питомец не любит чужих, прогулки проводятся строго индивидуально.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Берёте ли вы крупных собак с особенностями поведения?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Крупных — да. На счёт особенностей поведения лучше уточнять по телефону, рассматриваем такие ситуации индивидуально.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Чем и как кормят питомца?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Мы полностью сохраняем домашний рацион и время приёма пищи. Привычный корм (сухой или натуральный) привозит хозяин. Для натурального питания предусмотрены холодильники и морозильные камеры.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Как контролировать состояние собаки во время разлуки?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Каждый день мы отправляем подробные фото- и видеоотчёты в мессенджеры, а так же в рабочие часы находимся на связи: вы всегда можете позвонить и задать вопросы.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-cta">
+            <a href="#contacts" class="btn-primary">Забронировать номер</a>
+          </div>
+        </div>
+
+        <!-- Таб FAQ: Кошки -->
+        <div class="faq-content" id="tab-faq-cats">
+          <div class="faq-accordion-list">
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Слышат ли кошки лай собак?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Нет, кошки и собаки проживают на разных территориях и никак не пересекаются.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Как устроена дезинфекция и уборка кошачьих номеров?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Уборка и замена воды проводятся ежедневно. Перед заселением каждого нового гостя комната проходит полную санитарную обработку и кварцевание бактерицидной лампой.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Насколько безопасны номера для кошек?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Во всех окнах установлены прочные сетки «антикошка», а планировка исключает возможность случайного побега или контакта с другими кошками.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Обязательна ли вакцинация, если кошка живёт только в квартире?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Да, наличие паспорта с действующими комплексными прививками и обработкой от паразитов обязательно для всех гостей без исключения.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Что нужно привезти с собой для кошки?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Ветпаспорт с прививками, привычный рацион, а также по желанию домашний лоток и наполнитель — знакомые запахи помогают кошке освоиться на новом месте уже в первые часы.</p>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false">
+                <span class="faq-q-text">Как контролировать состояние кошки во время разлуки?</span>
+                <span class="faq-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="faq-answer-collapse">
+                <p class="faq-a-text">Каждый день мы отправляем подробные фото- и видеоотчёты в мессенджеры, а так же в рабочие часы находимся на связи: вы всегда можете позвонить и задать вопросы.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-cta">
+            <a href="#contacts" class="btn-primary">Забронировать номер</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- БЛОК 7: Отзывы и гости -->
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <h2 class="section-title section-title-center">Отзывы о нас</h2>
+        <p class="section-subtitle-center">Спасибо, что делитесь впечатлениями :)</p>
+
+        <!-- Карусель отзывов -->
+        <div class="reviews-carousel-wrap">
+          <button class="slider-arrow prev" aria-label="Предыдущие отзывы">‹</button>
+          <div class="reviews-carousel-overflow">
+            <div class="reviews-grid" id="reviewsTrack">
+              <!-- Отзыв 1 (из макета) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Елена и Муся</span>
+                  <span class="review-service-tag">Зоогостиница<br>для кошек</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Нам очень понравилось, обязательно приедем снова</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">Telegram</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 2 (из макета) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Наталья и Блэк</span>
+                  <span class="review-service-tag">Зоогостиница<br>для собак</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Оставляли в зоогостинице на проживание с дрессировкой! Людмила отучила мою собакужрать с земли и обучила нескольким командам за две недели))я довольна)</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">Сайт</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 3 (из макета) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Олег и Тайсон</span>
+                  <span class="review-service-tag">Дрессировка</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Брал у Людмилы курс окд, и мне и собаке понравилось)))</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">MAX</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 4 (живой) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Марина и Барсик</span>
+                  <span class="review-service-tag">Зоогостиница<br>для кошек</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Переживала страшно, кот первый раз один остался без нас на 5 дней(( но Виктория каждый вечер скидывала видео как он кушает и играет с мышкой. Забрали довольного и упитанного кота, спасибо большое!!</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">WhatsApp</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 5 (живой) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Денис и Рокки</span>
+                  <span class="review-service-tag">Зоогостиница<br>для собак</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Оставлял стаффорда на время ремонта в квартире. Парень с характером, но девченки быстро нашли к нему подход, гуляли в лесу по 3 раза в день. Собака даже уезжать не особо хотела ахах)</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">Яндекс.Карты</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 6 (живой) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Ксения и Луна</span>
+                  <span class="review-service-tag">Фотосессия</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Делали фотосессию «хозяин+хвостик» в лесу. Фотограф просто волшебница!! Моя вертлявая хаски в кадре получилась как с обложки журнала, фотки отдали уже на 5й день. Очень рекомендую!</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">Telegram</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 7 (живой) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Артем и Арчи</span>
+                  <span class="review-service-tag">Дрессировка</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Пришли с проблемой что тянул поводок как трактор на каждой прогулке. За 4 занятия Людмила обьяснила мои ошибки и научила собаку ходить рядом без дерганья. Теперь гулять одно удовольствие👍</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">Сайт</span>
+                </div>
+              </div>
+
+              <!-- Отзыв 8 (живой) -->
+              <div class="review-card">
+                <div class="review-header">
+                  <span class="review-author-badge">Светлана и Персик</span>
+                  <span class="review-service-tag">Зоогостиница<br>для кошек</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Чистота в номерах идеальная, запахов вообще никаких нет! У Персика индивидуальный лоток и миски стояли как дома. Кураторы очень душевные люди, видно что любят животных всей душой❤️</p>
+                <div class="review-footer">
+                  <span class="review-source-badge">2ГИС</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <button class="slider-arrow next" aria-label="Следующие отзывы">›</button>
+        </div>
+
+        <!-- Нижняя часть: Пушистые гости + Форма отзыва -->
+        <div class="reviews-bottom-grid">
+          <!-- Левая карточка: Наши пушистые гости -->
+          <div class="guests-card">
+            <h3 class="block-mini-title">Наши пушистые гости</h3>
+            <div class="guests-slider-wrap">
+              <button class="slider-arrow prev" aria-label="Предыдущий гость">‹</button>
+              <div class="slider-track" id="guestsSlider">
+                <div class="slide active">
+                  <div class="guest-photo-container">
+                    <img src="images/brut_card_photo.png" alt="Гость отеля Брут">
+                    <span class="guest-name-badge">Брут</span>
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="guest-photo-container">
+                    <img src="images/DSC_2049.png" alt="Гость отеля">
+                    <span class="guest-name-badge">Локи</span>
+                  </div>
+                </div>
+                <div class="slide">
+                  <div class="guest-photo-container">
+                    <img src="images/DSC_5461 2.png" alt="Гость отеля">
+                    <span class="guest-name-badge">Джесси</span>
+                  </div>
+                </div>
+              </div>
+              <button class="slider-arrow next" aria-label="Следующий гость">›</button>
+              <div class="slider-dots" id="guestsDots" style="display: none;">
+                <button class="dot active"></button>
+                <button class="dot"></button>
+                <button class="dot"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая карточка: Форма отзыва -->
+          <div class="review-form-card">
+            <h3 class="block-mini-title">Оставить отзыв</h3>
+            <form class="review-form" id="reviewForm" data-toast="Спасибо за ваш отзыв! Он появится на сайте после модерации.">
+              <div class="form-grid-2">
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="reviewName">Ваше имя</label>
+                  <input type="text" id="reviewName" class="form-input-sage" placeholder="Иван" required>
+                </div>
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="reviewPet">Кличка животного</label>
+                  <input type="text" id="reviewPet" class="form-input-sage" placeholder="Корги Локи" required>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="reviewService">Оказанная услуга</label>
+                  <input type="text" id="reviewService" class="form-input-sage" placeholder="Зоогостиница для собак">
+                </div>
+                <div class="form-group-custom" style="display: flex; flex-direction: column; justify-content: flex-end;">
+                  <label class="form-label-custom" style="margin-bottom: 8px;">Ваша оценка</label>
+                  <div class="star-rating" data-rating="5" title="Оцените качество услуг">
+                    <span class="star selected">★</span>
+                    <span class="star selected">★</span>
+                    <span class="star selected">★</span>
+                    <span class="star selected">★</span>
+                    <span class="star selected">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group-custom" style="margin-bottom: 20px;">
+                <label class="form-label-custom" for="reviewMsg">Расскажите как всё прошло :)</label>
+                <textarea id="reviewMsg" class="form-textarea-sage" placeholder="Поделитесь вашими впечатлениями..." required></textarea>
+              </div>
+              <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn-primary" style="padding: 12px 36px;">Отправить</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="reviews-cta">
+          <a href="#contacts" class="btn-primary btn-to-booking">Перейти к бронированию</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- БЛОК 8: Контакты и кураторы -->
+    <section class="section contacts-section" id="contacts">
+      <div class="container">
+        <h2 class="section-title section-title-center">Контакты</h2>
+
+        <div class="contacts-grid">
+          <!-- Левая колонка: Карточки кураторов -->
+          <div class="curator-cards">
+            <!-- Куратор: Людмила -->
+            <div class="curator-card">
+              <div class="curator-info">
+                <h3 class="curator-name">Людмила</h3>
+                <a href="tel:+79165276461" class="curator-phone">+7 (916) - 527 - 64 - 61</a>
+                <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
+                <div class="curator-exp">Опыт работы с собаками более 20 лет</div>
+                <div class="curator-messengers">
+                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
+                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+                </div>
+                <div class="curator-tags-stacked">
+                  <div class="tag-row">
+                    <span class="tag-terracotta">Зоогостиница для собак</span>
+                  </div>
+                  <div class="tag-row tag-row-split">
+                    <span class="tag-terracotta">Кинолог</span>
+                    <span class="curator-location">Московская обл, Раменский р-н, СНТ ЛУЧ</span>
+                  </div>
+                </div>
+              </div>
+              <img src="images/ludmila_exact.png" alt="Куратор Людмила" class="curator-photo">
+            </div>
+
+            <!-- Куратор: Виктория -->
+            <div class="curator-card">
+              <div class="curator-info">
+                <h3 class="curator-name">Виктория</h3>
+                <a href="tel:+79269255240" class="curator-phone">+7 (926) - 925 - 52 - 40</a>
+                <div class="curator-hours">ПН-ВС<br>с 10:00 - 20:00</div>
+                <div class="curator-exp">Опыт работы с кошками более 10 лет<br>Профессионально занимаюсь фото 7+ лет</div>
+                <div class="curator-messengers">
+                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в MAX</a>
+                  <a href="https://t.me" target="_blank" rel="noopener" class="btn-pill-msg">Написать в TG</a>
+                </div>
+                <div class="curator-tags-stacked">
+                  <div class="tag-row">
+                    <span class="tag-terracotta">Зоогостиница для кошек</span>
+                  </div>
+                  <div class="tag-row tag-row-split">
+                    <span class="tag-terracotta">Фотограф</span>
+                    <span class="curator-location">Московская обл, Раменский р-н, СНТ Учитель</span>
+                  </div>
+                </div>
+              </div>
+              <img src="images/victoria_exact.png" alt="Куратор Виктория" class="curator-photo">
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма бронирования (оставлена без изменений) -->
+          <div class="booking-form-card">
+            <h3 class="booking-form-title">Забронировать номер</h3>
+            <form class="booking-form" id="bookingForm" data-toast="Заявка успешно отправлена! Мы свяжемся с вами в течение 15 минут.">
+              <div class="form-grid-2">
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="bookName">Ваше имя *</label>
+                  <input type="text" id="bookName" class="form-input-sage" placeholder="Константин" required>
+                </div>
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="bookPhone">Номер телефона *</label>
+                  <input type="tel" id="bookPhone" class="form-input-sage" placeholder="+7 (999) 000-00-00" required>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="bookPet">Питомец и порода *</label>
+                  <input type="text" id="bookPet" class="form-input-sage" placeholder="Собака, Сиба-ину" required>
+                </div>
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="bookDates">Даты заезда и выезда *</label>
+                  <input type="text" id="bookDates" class="form-input-sage" placeholder="10.11 — 20.11" required>
+                </div>
+              </div>
+              <div class="form-group-custom" style="margin-bottom: 24px;">
+                <label class="form-label-custom" for="bookComment">Пожелания и особенности питомца</label>
+                <textarea id="bookComment" class="form-textarea-sage" placeholder="Натуральное питание, особенности характера, привычки..."></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width: 100%; padding: 16px;">Отправить заявку на бронь</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#" class="footer-logo">
+          <img src="images/logo.png" alt="Логотип «Сёма»" style="height: 36px; width: auto;">
+          <span>ЗООГОСТИНИЦА «СЁМА»</span>
+        </a>
+        <div class="footer-address">Московская область, Раменский район</div>
+      </div>
+      <div class="footer-copy">
+        © 2026 Зоогостиница «Сёма». Все права защищены. Забота, профессионализм и любовь к хвостикам.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Кнопка «Наверх» (плавающая кнопка справа снизу для всех блоков) -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Вернуться наверх" title="Наверх">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+    <span class="back-to-top-text">Наверх</span>
+  </button>
+
+  <script src="script.js?v=20261008_1"></script>
+</body>
+</html>
