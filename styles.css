@@ -1438,23 +1438,27 @@ body {
 .photo-slider-dots {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   justify-content: center;
+  flex-wrap: wrap;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .photo-slider-dots .p-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #A0ABA4;
   display: inline-block;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .photo-slider-dots .p-dot.active {
-  width: 24px;
-  height: 8px;
-  border-radius: 10px;
+  width: 20px;
+  height: 7px;
+  border-radius: 8px;
   background: var(--color-forest);
 }
 
