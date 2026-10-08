@@ -35,6 +35,22 @@ function initTabSwitchers() {
       });
     });
   });
+
+  // Hero cards navigation: switch tab and scroll smoothly to #rooms
+  document.querySelectorAll('.hero-card[data-room-tab]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const tabName = card.dataset.roomTab;
+      const roomsSection = document.getElementById('rooms');
+      if (!roomsSection) return;
+
+      const tabBtn = roomsSection.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+      if (tabBtn) {
+        tabBtn.click();
+      }
+
+      roomsSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 }
 
 /* =========================================================

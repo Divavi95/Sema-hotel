@@ -511,11 +511,42 @@ body {
   }
   
   .site-header {
-    padding: 14px 0 8px;
+    padding: 12px 0 8px;
   }
   
   .header-inner {
-    padding: 10px 16px;
+    padding: 8px 12px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo img {
+    height: 42px;
+  }
+
+  .header-call-badge {
+    padding: 8px 14px;
+    gap: 6px;
+  }
+
+  .call-badge-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .call-badge-text {
+    font-size: 13px;
+  }
+
+  .call-badge-arrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  .mobile-menu-btn {
+    padding: 6px;
   }
 }
 
@@ -686,28 +717,68 @@ body {
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 20px 0 40px;
+    padding: 16px 0 32px;
+  }
+  .hero-header {
+    margin-bottom: 24px;
   }
   .hero-title {
-    font-size: 32px;
+    font-size: 28px;
+    margin-bottom: 6px;
   }
   .hero-subtitle {
-    font-size: 18px;
+    font-size: 16px;
   }
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 12px;
     max-width: 420px;
+    margin: 0 auto;
   }
   .hero-card {
-    height: 460px;
-    padding: 36px 20px 0;
+    height: auto;
+    min-height: 0;
+    padding: 20px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(36, 66, 50, 0.06);
+    cursor: pointer;
   }
-  .hero-card-img-wrap.dog-wrap {
-    width: 220px;
+  .hero-card:active {
+    transform: scale(0.98);
   }
-  .hero-card-img-wrap.cat-wrap {
-    width: 220px;
+  .hero-card-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .hero-card-desc {
+    font-size: 14px;
+    margin-bottom: 14px;
+    max-width: none;
+    line-height: 1.4;
+  }
+  .hero-card-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0;
+    background: var(--color-forest);
+    color: #FFFFFF;
+    border: none;
+    pointer-events: none; /* Allows the card click to handle scrolling */
+  }
+  /* Скрываем большие фотографии овчарки и кота на мобильных для компактности */
+  .hero-card-img-wrap {
+    display: none !important;
+  }
+  /* Убираем кнопку связаться/перейти к бронированию на главном экране на мобилке */
+  .hero-cta {
+    display: none !important;
   }
 }
 

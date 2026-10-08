@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261008_3">
+  <link rel="stylesheet" href="styles.css?v=20261008_4">
 </head>
 <body>
 
@@ -111,20 +111,20 @@
         <!-- Сетка карточек -->
         <div class="hero-grid">
           <!-- Карточка: Для собак -->
-          <div class="hero-card">
+          <div class="hero-card" id="heroCardDog" data-room-tab="dogs" role="button" tabindex="0">
             <h2 class="hero-card-title">Для собак</h2>
             <p class="hero-card-desc">Выгул в лесу,<br>индивидуальный подход</p>
-            <a href="#rooms" class="hero-card-btn">Подробнее об условиях</a>
+            <a href="#rooms" class="hero-card-btn" data-room-tab="dogs">Подробнее об условиях</a>
             <div class="hero-card-img-wrap dog-wrap">
               <img src="images/hero_dog_exact_mock.png" alt="Овчарка" class="hero-card-img">
             </div>
           </div>
 
           <!-- Карточка: Для кошек -->
-          <div class="hero-card">
+          <div class="hero-card" id="heroCardCat" data-room-tab="cats" role="button" tabindex="0">
             <h2 class="hero-card-title">Для кошек</h2>
             <p class="hero-card-desc">Просторные номера<br>и никаких клеток</p>
-            <a href="#rooms" class="hero-card-btn">Подробнее об условиях</a>
+            <a href="#rooms" class="hero-card-btn" data-room-tab="cats">Подробнее об условиях</a>
             <div class="hero-card-img-wrap cat-wrap">
               <img src="images/hero_cat_exact_mock.png" alt="Кот" class="hero-card-img">
             </div>
@@ -1171,6 +1171,6 @@
     <span class="back-to-top-text">Наверх</span>
   </button>
 
-  <script src="script.js?v=20261008_3"></script>
+  <script src="script.js?v=20261008_4"></script>
 </body>
 </html>
