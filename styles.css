@@ -1109,7 +1109,7 @@ body {
   background: var(--bg-card);
   border: var(--border-card);
   border-radius: var(--radius-card);
-  padding: 32px 28px 24px;
+  padding: 32px 28px 0;
   box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
@@ -1188,6 +1188,7 @@ body {
 
 .training-prices {
   margin-top: auto;
+  margin-bottom: 24px;
   position: relative;
   z-index: 2;
   display: flex;
@@ -1226,6 +1227,9 @@ body {
   object-position: bottom right;
   pointer-events: none;
   z-index: 1;
+  display: block;
+  line-height: 0;
+  vertical-align: bottom;
 }
 
 .peeking-dog-img.aussie-img {
@@ -1251,7 +1255,7 @@ body {
   }
   .training-card {
     min-height: auto;
-    padding-bottom: 30px;
+    padding-bottom: 0 !important;
   }
 }
 
@@ -1369,6 +1373,12 @@ body {
   min-width: 280px;
   text-align: center;
   padding: 16px 36px;
+}
+
+.photoshoot-cta {
+  display: none;
+  text-align: center;
+  margin-top: 28px;
 }
 
 .photo-slider-wrap {
@@ -2112,7 +2122,7 @@ body {
 
   .training-card {
     min-height: auto;
-    padding: 16px 20px;
+    padding: 16px 20px 0;
     border-radius: 18px;
     cursor: pointer;
     transition: background-color 0.2s ease, box-shadow 0.25s ease;
@@ -2124,6 +2134,7 @@ body {
     justify-content: space-between;
     width: 100%;
     gap: 12px;
+    padding-bottom: 16px;
   }
 
   .training-card .badge-sage {
@@ -2141,11 +2152,7 @@ body {
   }
 
   .t-price-preview {
-    font-family: 'Manrope', sans-serif !important;
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--color-terracotta);
-    white-space: nowrap;
+    display: none !important;
   }
 
   .training-card-body {
@@ -2153,6 +2160,7 @@ body {
     overflow: hidden;
     opacity: 0;
     margin-top: 0;
+    padding-bottom: 0;
     transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease;
     position: relative;
   }
@@ -2164,25 +2172,21 @@ body {
   .training-card.is-open .training-card-body {
     max-height: 600px;
     opacity: 1;
-    margin-top: 18px;
+    margin-top: 4px;
+    padding-bottom: 0;
   }
 
   .training-card .peeking-dog-img {
-    max-width: 125px;
-    max-height: 130px;
+    max-width: 135px;
+    max-height: 145px;
     opacity: 0.95;
+    bottom: 0 !important;
+    right: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .training-card-mobile-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 15px;
-    margin-top: 16px;
-    position: relative;
-    z-index: 2;
+    display: none !important;
   }
 
   /* 2. Общие стили скрытия содержимого для спойлеров и аккордеонов */
@@ -2289,13 +2293,34 @@ body {
     text-align: center;
   }
 
-  /* 4. Блок «Фотосессии»: мобильный порядок */
-  .photo-split {
-    display: flex;
-    flex-direction: column;
+  /* 4. Блок «Фотосессии»: мобильный порядок и адаптация */
+  .photoshoot-section .tab-switcher {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    border-radius: 20px !important;
+    padding: 6px !important;
+    gap: 6px !important;
+    overflow-x: visible !important;
   }
 
-  .photo-info {
+  .photoshoot-section .tab-btn {
+    flex: 1 1 calc(50% - 6px) !important;
+    text-align: center !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    white-space: normal !important;
+    border-radius: var(--radius-pill) !important;
+    line-height: 1.25 !important;
+  }
+
+  .photoshoot-section .tab-btn:last-child {
+    flex: 1 1 100% !important;
+  }
+
+  .photo-card {
+    padding: 24px 18px;
     display: flex;
     flex-direction: column;
   }
@@ -2306,47 +2331,85 @@ body {
     margin-bottom: 16px;
   }
 
-  .photo-slider-wrap {
+  .photo-split {
+    display: flex;
+    flex-direction: column;
     order: 2;
+  }
+
+  .photo-slider-wrap {
+    order: 1;
     margin-bottom: 20px;
     width: 100%;
+  }
+
+  .photo-info {
+    order: 2;
+    display: flex;
+    flex-direction: column;
   }
 
   .photo-prices,
   .photo-prices-stacked {
-    order: 3;
+    order: 1;
     margin-bottom: 16px;
   }
 
+  .photo-prices .price-main,
+  .photo-prices-stacked .price-main {
+    font-size: 28px !important;
+    line-height: 1.1;
+  }
+
+  .photo-prices-stacked {
+    gap: 10px;
+  }
+
+  .price-sub-caption {
+    font-size: 15px;
+  }
+
   .photo-spoiler-content {
-    order: 4;
+    order: 2;
   }
 
   .photo-spoiler-btn {
-    order: 5;
-    margin-bottom: 20px;
+    order: 3;
+    margin-bottom: 0;
   }
 
-  .photo-btn {
-    order: 6;
+  /* Скрываем кнопку из каждой карточки фотосессии на мобилке */
+  .photo-card .photo-btn {
+    display: none !important;
+  }
+
+  /* Показываем одну общую кнопку под блоком на мобилке */
+  .photoshoot-cta {
+    display: block !important;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .photoshoot-cta .btn-primary {
     width: 100%;
-    min-width: 0;
-  }
-
-  .photo-card {
-    padding: 24px 18px;
+    max-width: 320px;
   }
 
   .tab-switcher {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 6px 8px;
-    gap: 6px;
+    width: fit-content !important;
+    max-width: 90% !important;
+    margin: 0 auto 28px !important;
+    justify-content: center !important;
+    padding: 5px !important;
+    gap: 4px !important;
+    background: #EBF1ED !important;
+    border-radius: var(--radius-pill) !important;
   }
 
   .tab-btn {
-    padding: 8px 18px;
-    font-size: 14px;
+    padding: 9px 24px !important;
+    font-size: 14px !important;
+    border-radius: var(--radius-pill) !important;
   }
 
   /* 5. Блок «Контакты»: компактные карточки кураторов */
