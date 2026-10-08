@@ -1,0 +1,34 @@
+name: Deploy to Reg.ru Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  web-deploy:
+    name: Sync files to Reg.ru via FTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files to Reg.ru
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 31.31.196.158
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: www/semahotel.ru/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .gitignore
+            README.md
+            config.py
+            server.py
+            *.png
+            *.jpg
+            assets/**
+            "Фотки на сайт"/**
