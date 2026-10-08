@@ -155,6 +155,7 @@ function initMobileMenu() {
   const btn = document.getElementById('mobileMenuBtn');
   const nav = document.getElementById('headerNav');
   const backdrop = document.getElementById('menuBackdrop');
+  const closeBtn = document.getElementById('mobileNavCloseBtn');
   if (!btn || !nav) return;
 
   function openMenu() {
@@ -173,17 +174,34 @@ function initMobileMenu() {
     document.body.style.overflow = '';
   }
 
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  function toggleMenu(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (nav.classList.contains('is-open')) {
       closeMenu();
     } else {
       openMenu();
     }
-  });
+  }
+
+  btn.addEventListener('click', toggleMenu);
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
 
   if (backdrop) {
     backdrop.addEventListener('click', closeMenu);
+    backdrop.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      closeMenu();
+    }, { passive: false });
   }
 
   // Close on nav link click

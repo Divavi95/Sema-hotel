@@ -377,13 +377,53 @@ body {
     z-index: 2001;
     display: flex !important;
     flex-direction: column;
-    padding: 80px 28px 40px;
+    padding: 24px 24px 40px;
     transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y: auto;
   }
 
   .header-nav.is-open {
     right: 0;
+  }
+
+  /* Шапка внутри выезжающего меню */
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 16px;
+    border-bottom: 1.5px solid var(--border-light);
+    width: 100%;
+  }
+
+  .mobile-nav-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-forest);
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .mobile-nav-close {
+    background: var(--bg-sage);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-forest);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-close:hover {
+    background: #E2ECE5;
+    color: var(--color-terracotta);
+    transform: rotate(90deg);
   }
 
   /* Затемняющий оверлей */

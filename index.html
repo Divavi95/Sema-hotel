@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261008_1">
+  <link rel="stylesheet" href="styles.css?v=20261008_2">
 </head>
 <body>
 
@@ -20,8 +20,12 @@
           <img src="images/logo_clean_full.png" alt="Зоогостиница «Сёма»">
         </a>
 
-        <!-- Навигация -->
+        <!-- Навигация (для десктопа в шапке / на мобильном выдвижная шторка) -->
         <nav class="header-nav" id="headerNav" aria-label="Основная навигация">
+          <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Меню</span>
+            <button class="mobile-nav-close" id="mobileNavCloseBtn" aria-label="Закрыть меню">✕</button>
+          </div>
           <ul class="nav-list">
             <li><a href="#rooms" class="nav-link">Номера</a></li>
             <li><a href="#training" class="nav-link">Дрессировка</a></li>
@@ -1048,6 +1052,6 @@
     <span class="back-to-top-text">Наверх</span>
   </button>
 
-  <script src="script.js?v=20261008_1"></script>
+  <script src="script.js?v=20261008_2"></script>
 </body>
 </html>
