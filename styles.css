@@ -688,10 +688,55 @@ body {
   display: block;
 }
 
-/* Hero CTA Bottom Button */
+/* Hero CTA Bottom Button & Volunteer Teaser */
 .hero-cta {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.hero-volunteer-teaser {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid rgba(45, 68, 54, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  text-decoration: none;
+  color: var(--color-forest);
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(36, 66, 50, 0.05);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.hero-volunteer-teaser:hover {
+  background: #FFFFFF;
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+  box-shadow: 0 6px 20px rgba(207, 107, 76, 0.18);
+  transform: translateY(-2px);
+}
+
+.hero-volunteer-teaser .h-vol-heart {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.hero-volunteer-teaser .h-vol-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-terracotta);
+  transition: transform 0.2s ease;
+}
+
+.hero-volunteer-teaser:hover .h-vol-arrow {
+  transform: translateX(4px);
 }
 
 .btn-primary {
@@ -780,9 +825,21 @@ body {
   .hero-card-img-wrap {
     display: none !important;
   }
-  /* Убираем кнопку связаться/перейти к бронированию на главном экране на мобилке */
+  /* На мобильных скрываем большую кнопку бронирования, но оставляем компактный тизер для волонтёров */
   .hero-cta {
+    display: flex !important;
+    margin-top: 16px;
+  }
+  .hero-cta .btn-primary {
     display: none !important;
+  }
+  .hero-volunteer-teaser {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 16px;
+    font-size: 13px;
+    text-align: center;
+    justify-content: center;
   }
 }
 
