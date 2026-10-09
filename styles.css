@@ -592,6 +592,12 @@ body {
   line-height: 1.3;
 }
 
+.hero-volunteer-wrapper {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
 /* Hero Cards Grid */
 .hero-grid {
   display: grid;
@@ -842,13 +848,13 @@ body {
   .hero-card-img-wrap {
     display: none !important;
   }
-  /* На мобильных скрываем большую кнопку бронирования, но оставляем компактный тизер для волонтёров */
+  /* На мобильных скрываем большую кнопку бронирования в hero */
   .hero-cta {
-    display: flex !important;
-    margin-top: 16px;
-  }
-  .hero-cta .btn-primary {
     display: none !important;
+  }
+  .hero-volunteer-wrapper {
+    margin-top: 14px;
+    width: 100%;
   }
   .hero-volunteer-teaser {
     width: 100%;
