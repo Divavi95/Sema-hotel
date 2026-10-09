@@ -1106,6 +1106,211 @@ body {
 }
 
 /* =========================================================
+   VOLUNTEER & SHELTER HELP BANNER (Блок 3.5)
+   ========================================================= */
+.volunteer-section {
+  padding: 20px 0 60px;
+}
+
+.volunteer-banner {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: 28px;
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.volunteer-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.badge-volunteer {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-sage);
+  color: var(--color-forest);
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+}
+
+.badge-volunteer-discount {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-terracotta);
+  color: #FFFFFF;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.2px;
+}
+
+.volunteer-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-forest);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.volunteer-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-body);
+  margin-bottom: 24px;
+}
+
+.volunteer-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.volunteer-feature-item {
+  background: var(--bg-page);
+  border: var(--border-light);
+  border-radius: 16px;
+  padding: 14px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.v-feature-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.v-feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.v-feature-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-forest);
+  line-height: 1.3;
+}
+
+.v-feature-text span {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.volunteer-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-volunteer {
+  padding: 14px 32px;
+  font-size: 16px;
+}
+
+.volunteer-note {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.volunteer-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #FDFDFD;
+}
+
+.volunteer-img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .volunteer-banner {
+    grid-template-columns: 1fr;
+    padding: 32px 28px;
+    gap: 28px;
+  }
+  .volunteer-img-wrap {
+    order: -1;
+    max-height: 320px;
+  }
+  .volunteer-img {
+    max-height: 320px;
+  }
+  .volunteer-features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .volunteer-section {
+    padding: 10px 0 36px;
+  }
+  .volunteer-banner {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+  .volunteer-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .volunteer-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .volunteer-features {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .volunteer-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .btn-volunteer {
+    width: 100%;
+    text-align: center;
+  }
+  .volunteer-note {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
    TRAINING SECTION (Блок 4)
    ========================================================= */
 .training-section {
