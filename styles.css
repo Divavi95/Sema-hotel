@@ -598,38 +598,61 @@ body {
   justify-content: center;
 }
 
-/* Trust Features Row (Hero) */
+/* Trust Features Row (Hero) - гармоничный брендовый стиль */
 .hero-trust-badges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 18px;
-  margin: 18px auto 0;
-  max-width: 820px;
+  gap: 8px 12px;
+  margin: 16px auto 0;
+  max-width: 780px;
 }
 
 .trust-badge-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(43, 76, 59, 0.06);
-  border: 1px solid rgba(43, 76, 59, 0.12);
-  padding: 6px 14px;
-  border-radius: 20px;
+  gap: 7px;
+  background: #FFFFFF;
+  border: 1px solid rgba(207, 107, 76, 0.22);
+  box-shadow: 0 2px 8px rgba(43, 76, 59, 0.04);
+  padding: 7px 15px;
+  border-radius: var(--radius-pill);
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: var(--color-forest);
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .trust-badge-item:hover {
-  background: rgba(43, 76, 59, 0.12);
+  border-color: var(--color-terracotta);
+  box-shadow: 0 4px 14px rgba(207, 107, 76, 0.12);
   transform: translateY(-1px);
 }
 
 .trust-badge-icon {
   font-size: 14px;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .hero-trust-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 8px;
+    margin-top: 14px;
+  }
+
+  .trust-badge-item {
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    text-align: center;
+    gap: 5px;
+    border-radius: 12px;
+    background: #FFFFFF;
+  }
 }
 
 /* Плавающая кнопка быстрого обращения (WhatsApp / Telegram) */
