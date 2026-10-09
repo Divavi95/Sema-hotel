@@ -1036,11 +1036,20 @@ body {
   position: relative;
 }
 
+.rooms-slider .slider-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-card-subtle);
+}
+
 .slider-track {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 20px;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
   overflow: hidden;
   background: var(--bg-card-subtle);
 }
