@@ -598,6 +598,91 @@ body {
   justify-content: center;
 }
 
+/* Trust Features Row (Hero) */
+.hero-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  margin: 18px auto 0;
+  max-width: 820px;
+}
+
+.trust-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(43, 76, 59, 0.06);
+  border: 1px solid rgba(43, 76, 59, 0.12);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-forest);
+  transition: all 0.2s ease;
+}
+
+.trust-badge-item:hover {
+  background: rgba(43, 76, 59, 0.12);
+  transform: translateY(-1px);
+}
+
+.trust-badge-icon {
+  font-size: 14px;
+}
+
+/* Плавающая кнопка быстрого обращения (WhatsApp / Telegram) */
+.floating-contact-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff !important;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.floating-contact-btn:hover {
+  background: #1EBE5D;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
+}
+
+.floating-btn-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  border: 2px solid #25D366;
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .floating-contact-btn {
+    bottom: 18px;
+    left: 16px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
 /* Hero Cards Grid */
 .hero-grid {
   display: grid;
@@ -2423,6 +2508,9 @@ body {
 }
 
 .btn-pill-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #E1E8E3;
   color: var(--color-forest);
   font-family: 'Manrope', sans-serif;
@@ -2435,8 +2523,26 @@ body {
 }
 
 .btn-pill-msg:hover {
-  background: var(--color-forest);
-  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn-pill-wa {
+  background: #25D366;
+  color: #fff !important;
+}
+
+.btn-pill-wa:hover {
+  background: #1EBE5D;
+}
+
+.btn-pill-tg {
+  background: #229ED9;
+  color: #fff !important;
+}
+
+.btn-pill-tg:hover {
+  background: #1C8AC0;
 }
 
 .tag-terracotta {
