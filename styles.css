@@ -708,41 +708,51 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg-card);
-  border: 1px solid rgba(45, 68, 54, 0.15);
+  background: linear-gradient(135deg, #FFF6F2 0%, #FFFFFF 100%);
+  border: 1.5px solid #F0A892;
   border-radius: var(--radius-pill);
-  padding: 10px 22px;
+  padding: 12px 24px;
   text-decoration: none;
-  color: var(--color-forest);
+  color: #B24E31;
   font-family: 'Manrope', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 16px rgba(36, 66, 50, 0.05);
-  transition: all 0.25s ease;
+  font-size: 14.5px;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(207, 107, 76, 0.16);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-volunteer-teaser:hover {
-  background: #FFFFFF;
-  border-color: var(--color-terracotta);
-  color: var(--color-terracotta);
-  box-shadow: 0 6px 20px rgba(207, 107, 76, 0.18);
+  background: linear-gradient(135deg, #CF6B4C 0%, #B85B3E 100%);
+  border-color: #CF6B4C;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(207, 107, 76, 0.32);
   transform: translateY(-2px);
 }
 
 .hero-volunteer-teaser .h-vol-heart {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
+  display: inline-block;
+  animation: heartPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
 }
 
 .hero-volunteer-teaser .h-vol-arrow {
   font-size: 16px;
   font-weight: 700;
-  color: var(--color-terracotta);
-  transition: transform 0.2s ease;
+  color: #CF6B4C;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .hero-volunteer-teaser:hover .h-vol-arrow {
+  color: #FFFFFF;
   transform: translateX(4px);
 }
 
@@ -843,10 +853,11 @@ body {
   .hero-volunteer-teaser {
     width: 100%;
     max-width: 420px;
-    padding: 10px 16px;
-    font-size: 13px;
+    padding: 12px 18px;
+    font-size: 13.5px;
     text-align: center;
     justify-content: center;
+    box-shadow: 0 4px 16px rgba(207, 107, 76, 0.18);
   }
 }
 
