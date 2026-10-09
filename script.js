@@ -319,6 +319,24 @@ function initMobileAccordionsAndSpoilers() {
       btn.textContent = isExpanded ? activeText : defaultText;
     });
   });
+
+  // 4. Аккордеон для фото номеров в мобильной версии
+  document.querySelectorAll('.rooms-gallery-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+      const content = document.getElementById(targetId);
+      if (!content) return;
+
+      const isExpanded = content.classList.toggle('is-open');
+      btn.classList.toggle('is-open', isExpanded);
+      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      
+      const textSpan = btn.querySelector('.r-toggle-text');
+      if (textSpan) {
+        textSpan.textContent = isExpanded ? 'Скрыть фотографии номеров' : 'Посмотреть фотографии номеров';
+      }
+    });
+  });
 }
 
 /* =========================================================
