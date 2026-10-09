@@ -1917,24 +1917,51 @@ body {
   color: var(--color-terracotta);
 }
 
+.btn-outline-terracotta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--color-terracotta);
+  border: 2px solid var(--color-terracotta);
+  border-radius: var(--radius-pill);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: none;
+}
+
+.btn-outline-terracotta:hover {
+  background: var(--color-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(206, 110, 76, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-outline-terracotta:active {
+  transform: translateY(0);
+}
+
 .reviews-cta {
   text-align: center;
 }
 
 .reviews-section .btn-to-booking {
-  background: transparent;
-  color: var(--color-terracotta);
-  border: 2px solid var(--color-terracotta);
-  box-shadow: none;
+  background-color: var(--color-terracotta);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: var(--shadow-button);
   margin-top: 36px;
   display: inline-block;
   transition: all 0.25s ease;
 }
 
 .reviews-section .btn-to-booking:hover {
-  background: var(--color-terracotta);
+  background-color: var(--color-terracotta-hover);
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(206, 110, 76, 0.25);
+  box-shadow: 0 6px 20px rgba(207, 107, 76, 0.35);
   transform: translateY(-2px);
 }
 
@@ -2668,14 +2695,19 @@ body {
   }
 
   .reviews-section .btn-to-booking {
-    background: transparent !important;
-    color: var(--color-terracotta) !important;
-    border: 2px solid var(--color-terracotta) !important;
-    box-shadow: none !important;
+    background-color: var(--color-terracotta) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: var(--shadow-button) !important;
     margin-top: 16px !important;
     padding: 14px 20px !important;
     font-size: 16px !important;
     width: 100%;
+  }
+
+  .review-form-card .btn-outline-terracotta {
+    width: 100%;
+    padding: 12px 20px !important;
   }
 
   .form-grid-2 {
