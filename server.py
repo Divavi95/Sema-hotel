@@ -6,6 +6,7 @@
 
 import os
 import json
+import time
 import logging
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -111,35 +112,53 @@ def save_visit(visit):
 # --- TELEGRAM INLINE HANDLER FOR REVIEW MODERATION ---
 @bot.callback_query_handler(func=lambda call: call.data.startswith(('appr_', 'decl_')))
 def handle_review_moderation(call):
-    action, rev_id = call.data.split('_', 1)
-    pending = get_pending_reviews()
-    rev = pending.get(rev_id)
+    try:
+        action, rev_id = call.data.split('_', 1)
+        pending = get_pending_reviews()
+        rev = pending.get(rev_id)
 
-    if action == 'appr':
-        if rev:
-            save_approved_review(rev)
-            del pending[rev_id]
-            save_pending_reviews(pending)
-            bot.answer_callback_query(call.id, '✅ Отзыв опубликован на сайте!')
-            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
+        if action == 'appr':
+            if rev:
+                save_approved_review(rev)
+                del pending[rev_id]
+                save_pending_reviews(pending)
+                try:
+                    bot.answer_callback_query(call.id, '✅ Отзыв опубликован на сайте!')
+                except Exception:
+                    pass
+                try:
+                    bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
+                except Exception:
+                    pass
+                bot.send_message(
+                    call.message.chat.id,
+                    f"✅ <b>Отзыв от «{rev.get('name', 'Клиент')}» одобрен куратором {call.from_user.first_name} и добавлен на сайт!</b>",
+                    reply_to_message_id=call.message.message_id
+                )
+            else:
+                try:
+                    bot.answer_callback_query(call.id, 'Отзыв уже обработан или не найден.')
+                except Exception:
+                    pass
+        elif action == 'decl':
+            if rev:
+                del pending[rev_id]
+                save_pending_reviews(pending)
+            try:
+                bot.answer_callback_query(call.id, '❌ Отзыв отклонён')
+            except Exception:
+                pass
+            try:
+                bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
+            except Exception:
+                pass
             bot.send_message(
                 call.message.chat.id,
-                f"✅ <b>Отзыв от «{rev['name']}» одобрен куратором {call.from_user.first_name} и добавлен на сайт!</b>",
+                f"❌ <b>Отзыв отклонён куратором {call.from_user.first_name}.</b>",
                 reply_to_message_id=call.message.message_id
             )
-        else:
-            bot.answer_callback_query(call.id, 'Отзыв уже обработан или не найден.')
-    elif action == 'decl':
-        if rev:
-            del pending[rev_id]
-            save_pending_reviews(pending)
-        bot.answer_callback_query(call.id, '❌ Отзыв отклонён')
-        bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
-        bot.send_message(
-            call.message.chat.id,
-            f"❌ <b>Отзыв отклонён куратором {call.from_user.first_name}.</b>",
-            reply_to_message_id=call.message.message_id
-        )
+    except Exception as e:
+        logger.error(f"Error handling review moderation callback: {e}")
 
 
 # --- HTTP SERVER FOR FRONTEND API ---
