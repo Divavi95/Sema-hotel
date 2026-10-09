@@ -31,6 +31,7 @@ if not BOT_TOKEN or not CHAT_ID:
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REVIEWS_FILE = os.path.join(BASE_DIR, 'reviews_data.json')
 BOOKINGS_FILE = os.path.join(BASE_DIR, 'bookings_data.json')
+VISITS_FILE = os.path.join(BASE_DIR, 'visits_data.json')
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -45,6 +46,10 @@ if not os.path.exists(REVIEWS_FILE):
 
 if not os.path.exists(BOOKINGS_FILE):
     with open(BOOKINGS_FILE, 'w', encoding='utf-8') as f:
+        json.dump([], f, ensure_ascii=False, indent=2)
+
+if not os.path.exists(VISITS_FILE):
+    with open(VISITS_FILE, 'w', encoding='utf-8') as f:
         json.dump([], f, ensure_ascii=False, indent=2)
 
 pending_reviews = {}  # review_id -> review_dict
@@ -64,6 +69,22 @@ def save_booking(booking):
     bookings.insert(0, booking)
     with open(BOOKINGS_FILE, 'w', encoding='utf-8') as f:
         json.dump(bookings, f, ensure_ascii=False, indent=2)
+
+
+def save_visit(visit):
+    try:
+        visits = []
+        if os.path.exists(VISITS_FILE):
+            with open(VISITS_FILE, 'r', encoding='utf-8') as f:
+                visits = json.load(f)
+        visits.insert(0, visit)
+        # Keep recent 2000 visits
+        if len(visits) > 2000:
+            visits = visits[:2000]
+        with open(VISITS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(visits, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error(f"Error saving visit: {e}")
 
 
 # --- TELEGRAM INLINE HANDLER FOR REVIEW MODERATION ---
@@ -112,11 +133,39 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
-        if parsed.path == '/api/reviews':
+        if parsed.path == '/health':
+            self._set_headers(200)
+            self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
+        elif parsed.path == '/api/reviews':
             with open(REVIEWS_FILE, 'r', encoding='utf-8') as f:
                 data = f.read()
             self._set_headers(200)
             self.wfile.write(data.encode('utf-8'))
+        elif parsed.path == '/api/stats':
+            try:
+                visits = []
+                if os.path.exists(VISITS_FILE):
+                    with open(VISITS_FILE, 'r', encoding='utf-8') as f:
+                        visits = json.load(f)
+                total_visits = len(visits)
+                # Count sources
+                sources = {}
+                devices = {}
+                for v in visits:
+                    s = v.get('source', 'Прямой заход')
+                    sources[s] = sources.get(s, 0) + 1
+                    d = v.get('device', 'Десктоп')
+                    devices[d] = devices.get(d, 0) + 1
+                self._set_headers(200)
+                self.wfile.write(json.dumps({
+                    'total': total_visits,
+                    'sources': sources,
+                    'devices': devices,
+                    'recent': visits[:50]
+                }, ensure_ascii=False).encode('utf-8'))
+            except Exception as e:
+                self._set_headers(500)
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
         else:
             self._set_headers(404)
             self.wfile.write(json.dumps({'error': 'Not found'}).encode('utf-8'))
@@ -131,7 +180,45 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
         except Exception:
             payload = {}
 
-        if parsed.path == '/api/booking':
+        if parsed.path == '/api/visit':
+            import datetime
+            now_str = datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
+            source = payload.get('source', 'Прямой переход')
+            device = payload.get('device', 'Мобильный' if 'mobi' in payload.get('userAgent', '').lower() else 'Десктоп')
+            screen = payload.get('screen', 'Неизвестно')
+            landing = payload.get('path', '/')
+            referrer = payload.get('referrer', '')
+
+            visit_entry = {
+                'time': now_str,
+                'source': source,
+                'device': device,
+                'screen': screen,
+                'path': landing,
+                'referrer': referrer
+            }
+            save_visit(visit_entry)
+
+            # Send Telegram alert for new visitor
+            msg = (
+                f"👀 <b>НОВЫЙ ПОСЕТИТЕЛЬ НА САЙТЕ!</b>\n"
+                f"━━━━━━━━━━━━━━━━━━━\n"
+                f"🌐 <b>Источник:</b> {source}\n"
+                f"📱 <b>Устройство:</b> {device} ({screen})\n"
+                f"🔗 <b>Страница:</b> {landing}\n"
+                f"🕒 <b>Время:</b> {now_str}\n"
+                f"━━━━━━━━━━━━━━━━━━━\n"
+                f"<i>Зоогостиница «Сёма» • semahotel.ru</i>"
+            )
+            try:
+                bot.send_message(CHAT_ID, msg)
+            except Exception as e:
+                logger.error(f"Error sending telegram visit alert: {e}")
+
+            self._set_headers(200)
+            self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
+
+        elif parsed.path == '/api/booking':
             name = payload.get('name', 'Не указано')
             phone = payload.get('phone', 'Не указано')
             pet = payload.get('pet', 'Не указано')

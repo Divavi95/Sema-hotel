@@ -570,6 +570,60 @@ function initBackToTop() {
 }
 
 /* =========================================================
+   VISITOR TELEMETRY & TRAFFIC TRACKER
+   ========================================================= */
+function initVisitorTracking() {
+  // Prevent duplicate counts on refresh in same session (1 hour cooldown)
+  const lastTrackTime = sessionStorage.getItem('sema_visited');
+  const now = Date.now();
+  if (lastTrackTime && (now - parseInt(lastTrackTime, 10)) < 1800000) {
+    return;
+  }
+  sessionStorage.setItem('sema_visited', now.toString());
+
+  // Determine traffic source
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get('utm_source');
+  const utmMedium = params.get('utm_medium');
+  const ref = document.referrer;
+  
+  let source = 'Прямой заход';
+  if (utmSource) {
+    source = `UTM: ${utmSource}${utmMedium ? ' / ' + utmMedium : ''}`;
+  } else if (ref) {
+    if (ref.includes('t.me') || ref.includes('telegram')) source = 'Telegram (пост / канал)';
+    else if (ref.includes('yandex') || ref.includes('ya.ru')) source = 'Яндекс (Поиск / Карты)';
+    else if (ref.includes('google')) source = 'Google (Поиск)';
+    else if (ref.includes('avito')) source = 'Авито (Объявление)';
+    else if (ref.includes('vk.com')) source = 'ВКонтакте (ВК)';
+    else if (ref.includes('whatsapp')) source = 'WhatsApp';
+    else {
+      try {
+        source = new URL(ref).hostname;
+      } catch (e) {
+        source = ref;
+      }
+    }
+  }
+
+  const payload = {
+    source: source,
+    referrer: ref,
+    userAgent: navigator.userAgent || '',
+    screen: `${window.screen.width}x${window.screen.height}`,
+    path: window.location.pathname + window.location.hash
+  };
+
+  fetch(`${API_BASE_URL}/api/visit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {
+    // Fail silently
+  });
+}
+
+/* =========================================================
    INIT
    ========================================================= */
 document.addEventListener('DOMContentLoaded', () => {
@@ -582,6 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initForms();
   initCallDropdown();
   initBackToTop();
+  initVisitorTracking();
 });
 
 // Automatic cache invalidation for mobile back/forward cache (bfcache)
