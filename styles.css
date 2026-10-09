@@ -941,7 +941,7 @@ body {
   grid-template-columns: 1fr 420px;
   grid-template-rows: auto auto;
   gap: 32px 48px;
-  align-items: center;
+  align-items: start;
 }
 
 .rooms-info {
@@ -963,7 +963,7 @@ body {
 }
 
 .rooms-card-title {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
