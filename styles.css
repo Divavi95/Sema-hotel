@@ -1628,25 +1628,34 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  border: none;
-  font-size: 26px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  font-size: 24px;
   color: var(--color-forest);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 5;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reviews-carousel-wrap .slider-arrow:hover {
-  background: var(--color-forest);
-  color: #FFFFFF;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--color-forest);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.reviews-carousel-wrap .slider-arrow:active {
+  transform: translateY(-50%) scale(0.96);
 }
 
 .reviews-carousel-wrap .slider-arrow.prev {
@@ -2578,8 +2587,84 @@ body {
   }
 
   /* 6. Рецензии и форма */
-  .reviews-grid {
-    grid-template-columns: 1fr;
+  .reviews-section {
+    padding: 36px 0 48px !important;
+  }
+
+  .reviews-section .section-subtitle-center {
+    font-size: 15px !important;
+    margin-top: -8px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .reviews-carousel-wrap {
+    padding: 0 28px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .reviews-carousel-wrap .slider-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 20px !important;
+  }
+
+  .reviews-carousel-wrap .slider-arrow.prev {
+    left: -4px !important;
+  }
+
+  .reviews-carousel-wrap .slider-arrow.next {
+    right: -4px !important;
+  }
+
+  .review-card {
+    padding: 20px 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .review-header {
+    margin-bottom: 10px !important;
+  }
+
+  .review-author-badge {
+    font-size: 13px !important;
+    padding: 5px 14px !important;
+  }
+
+  .review-service-tag {
+    font-size: 12px !important;
+  }
+
+  .review-stars {
+    font-size: 15px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .review-text {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .review-source-badge {
+    font-size: 11px !important;
+    padding: 4px 12px !important;
+  }
+
+  .reviews-bottom-grid {
+    gap: 20px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .guests-card, .review-form-card {
+    padding: 22px 18px !important;
+    border-radius: 22px !important;
+  }
+
+  .guests-card .block-mini-title,
+  .review-form-card .block-mini-title {
+    font-size: 20px !important;
+    margin-bottom: 16px !important;
   }
 
   .reviews-section .btn-to-booking {
@@ -2587,12 +2672,16 @@ body {
     color: var(--color-terracotta) !important;
     border: 2px solid var(--color-terracotta) !important;
     box-shadow: none !important;
-    margin-top: 24px;
+    margin-top: 16px !important;
+    padding: 14px 20px !important;
+    font-size: 16px !important;
     width: 100%;
   }
 
   .form-grid-2 {
     grid-template-columns: 1fr;
+    gap: 12px !important;
+    margin-bottom: 12px !important;
   }
 
   /* Защита от автозума в Safari iOS */
