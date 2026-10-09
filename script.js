@@ -367,24 +367,37 @@ function initStarRating() {
 /* =========================================================
    FORM TOAST NOTIFICATION
    ========================================================= */
+let toastTimeout = null;
+
 function showToast(message) {
   let toast = document.getElementById('toast');
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'toast';
-    toast.style.cssText = `
-      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
-      background: var(--color-forest); color: #fff;
-      padding: 14px 28px; border-radius: var(--radius-pill);
-      font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 500;
-      box-shadow: 0 8px 24px rgba(36,66,50,0.2); z-index: 9999;
-      opacity: 0; transition: opacity 0.3s ease;
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+      <div class="toast-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="toast-message"></div>
     `;
     document.body.appendChild(toast);
   }
-  toast.textContent = message;
-  toast.style.opacity = '1';
-  setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+
+  const msgEl = toast.querySelector('.toast-message');
+  if (msgEl) msgEl.textContent = message;
+
+  // Clear previous timer if still active
+  if (toastTimeout) clearTimeout(toastTimeout);
+
+  // Trigger reflow to animate smoothly
+  toast.classList.remove('is-visible');
+  void toast.offsetWidth;
+  toast.classList.add('is-visible');
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, 4000);
 }
 
 function initForms() {
