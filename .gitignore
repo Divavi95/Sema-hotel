@@ -1,24 +1,34 @@
+# Source & Design artifacts
 Design/
+raw_assets/
+assets/
+
+# Node & dependencies
 node_modules/
-.vscode/
-*.log
-small_photo*.png
-temp_preview*.png
-card_full_photo*.png
-price_crop_*.png
-text_crop_*.png
-title_*.png
-tabs_crop_*.png
-dots_crop_*.png
-photo_area_crop_*.png
-bottom_*.png
-faq_*_*.png
-reviews_part*.png
-bookings_data.json
-reviews_data.json
+
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
 .env
 .env*
 *.key
-deploy_ftp.py
 config.py
+deploy_ftp.py
+
+# Data & Local storage
+bookings_data.json
+reviews_data.json
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Temporary screenshots & crops
+screenshot_*.png
+test_*.png
+*.tmp
 
