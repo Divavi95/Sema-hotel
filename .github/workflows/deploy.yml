@@ -13,6 +13,13 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
+      - name: 🔄 Auto-bump Asset Cache Buster
+        run: |
+          BUILD_VER="$(date +'%Y%m%d_%H%M%S')"
+          echo "Injecting automatic cache buster: ${BUILD_VER}"
+          sed -i -E "s/styles\.css\?v=[^\"']+/styles.css?v=${BUILD_VER}/g" index.html
+          sed -i -E "s/script\.js\?v=[^\"']+/script.js?v=${BUILD_VER}/g" index.html
+
       - name: 📂 Sync files to Reg.ru
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -42,4 +49,5 @@ jobs:
             reviews_part*.png
             small_photo*.png
             assets/**
+            raw_assets/**
             "Фотки на сайт"/**

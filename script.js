@@ -584,6 +584,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
 });
 
+// Automatic cache invalidation for mobile back/forward cache (bfcache)
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});
+
 window.addEventListener('resize', () => {
   if (window.innerWidth > 768) {
     document.querySelectorAll('.is-open').forEach(el => {
