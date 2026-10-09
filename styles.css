@@ -341,6 +341,13 @@ body {
   transform: translateY(-6px) rotate(-45deg);
 }
 
+/* Hide outer burger button when drawer menu is opened so it doesn't overlap or create double cross */
+.mobile-menu-btn.is-active {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .mobile-nav-header {
   display: none;
 }
