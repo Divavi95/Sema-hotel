@@ -484,7 +484,7 @@ function initForms() {
 
 async function loadDynamicReviews() {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/reviews`);
+    const res = await fetch(`${API_BASE_URL}/api/reviews?t=${Date.now()}`);
     if (!res.ok) return;
     const reviews = await res.json();
     if (!Array.isArray(reviews) || reviews.length === 0) return;

@@ -32,6 +32,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REVIEWS_FILE = os.path.join(BASE_DIR, 'reviews_data.json')
 BOOKINGS_FILE = os.path.join(BASE_DIR, 'bookings_data.json')
 VISITS_FILE = os.path.join(BASE_DIR, 'visits_data.json')
+PENDING_FILE = os.path.join(BASE_DIR, 'pending_reviews.json')
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -52,7 +53,27 @@ if not os.path.exists(VISITS_FILE):
     with open(VISITS_FILE, 'w', encoding='utf-8') as f:
         json.dump([], f, ensure_ascii=False, indent=2)
 
-pending_reviews = {}  # review_id -> review_dict
+if not os.path.exists(PENDING_FILE):
+    with open(PENDING_FILE, 'w', encoding='utf-8') as f:
+        json.dump({}, f, ensure_ascii=False, indent=2)
+
+
+def get_pending_reviews():
+    try:
+        if os.path.exists(PENDING_FILE):
+            with open(PENDING_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+
+def save_pending_reviews(pending):
+    try:
+        with open(PENDING_FILE, 'w', encoding='utf-8') as f:
+            json.dump(pending, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error(f"Error saving pending reviews: {e}")
 
 
 def save_approved_review(review):
@@ -91,11 +112,14 @@ def save_visit(visit):
 @bot.callback_query_handler(func=lambda call: call.data.startswith(('appr_', 'decl_')))
 def handle_review_moderation(call):
     action, rev_id = call.data.split('_', 1)
-    rev = pending_reviews.get(rev_id)
+    pending = get_pending_reviews()
+    rev = pending.get(rev_id)
 
     if action == 'appr':
         if rev:
             save_approved_review(rev)
+            del pending[rev_id]
+            save_pending_reviews(pending)
             bot.answer_callback_query(call.id, '✅ Отзыв опубликован на сайте!')
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
             bot.send_message(
@@ -103,12 +127,12 @@ def handle_review_moderation(call):
                 f"✅ <b>Отзыв от «{rev['name']}» одобрен куратором {call.from_user.first_name} и добавлен на сайт!</b>",
                 reply_to_message_id=call.message.message_id
             )
-            del pending_reviews[rev_id]
         else:
             bot.answer_callback_query(call.id, 'Отзыв уже обработан или не найден.')
     elif action == 'decl':
         if rev:
-            del pending_reviews[rev_id]
+            del pending[rev_id]
+            save_pending_reviews(pending)
         bot.answer_callback_query(call.id, '❌ Отзыв отклонён')
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
         bot.send_message(
@@ -258,7 +282,7 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
 
             import time
             rev_id = str(int(time.time() * 1000))
-            pending_reviews[rev_id] = {
+            new_review = {
                 'id': rev_id,
                 'name': name,
                 'pet': pet,
@@ -267,6 +291,9 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
                 'text': text,
                 'source': 'Сайт'
             }
+            pending = get_pending_reviews()
+            pending[rev_id] = new_review
+            save_pending_reviews(pending)
 
             stars_str = '★' * int(rating)
             msg = (
