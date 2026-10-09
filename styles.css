@@ -2268,13 +2268,36 @@ body {
 }
 
 .curator-avatar-desktop {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--color-sage);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
+}
+
+.curator-title-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.curator-top-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.curator-location-row {
+  margin-bottom: 14px;
+}
+
+.curator-location {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.4;
 }
 
 .curator-name {
@@ -2283,7 +2306,7 @@ body {
   font-weight: 700;
   color: var(--color-forest);
   margin-bottom: 0;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .curator-phone {
@@ -2320,7 +2343,7 @@ body {
 .curator-messengers {
   display: flex;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .btn-pill-msg {
@@ -2340,40 +2363,16 @@ body {
   color: #fff;
 }
 
-.curator-tags-stacked {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.curator-tags-stacked .tag-row {
-  display: flex;
-  align-items: center;
-}
-
-.curator-tags-stacked .tag-row-split {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
 .tag-terracotta {
   background: var(--color-terracotta);
   color: #fff;
   font-family: 'Manrope', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  padding: 8px 20px;
+  padding: 5px 14px;
   border-radius: var(--radius-pill);
   display: inline-block;
   white-space: nowrap;
-}
-
-.curator-location {
-  font-family: 'Manrope', sans-serif;
-  font-size: 13px;
-  color: #666666;
 }
 
 .curator-photo {
