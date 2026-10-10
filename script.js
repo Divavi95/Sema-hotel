@@ -636,6 +636,75 @@ function initVisitorTracking() {
   });
 }
 
+/**
+ * Отправка целевых действий посетителя (клик по WhatsApp, звонок, выбор собаки/кошки)
+ */
+function sendUserAction(type, label, details) {
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get('utm_source') || '';
+  const ref = document.referrer || '';
+  let source = utmSource ? `UTM: ${utmSource}` : (ref.includes('yandex') ? 'Яндекс' : (ref.includes('google') ? 'Google' : (ref.includes('t.me') ? 'Telegram' : '')));
+
+  fetch(`${API_BASE_URL}/api/action`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: type,
+      label: label,
+      details: details || '',
+      source: source
+    })
+  }).catch(() => {
+    // Fail silently
+  });
+}
+
+function initActionTracking() {
+  // 1. Плавающий виджет WhatsApp (слева снизу)
+  const floatingBtn = document.querySelector('.floating-contact-btn');
+  if (floatingBtn) {
+    floatingBtn.addEventListener('click', () => {
+      sendUserAction('contact', 'Клик по кнопке «Задать вопрос в WhatsApp»', 'Открыл чат WhatsApp с Викторией');
+    });
+  }
+
+  // 2. Кнопки мессенджеров кураторов
+  document.querySelectorAll('.btn-pill-wa').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isVictoria = btn.href.includes('9269255240');
+      const target = isVictoria ? 'WhatsApp Виктории (Кошки / Фотограф)' : 'WhatsApp Людмилы (Собаки / Кинолог)';
+      sendUserAction('contact', `Переход в ${target}`, 'Нажата кнопка мессенджера в карточке куратора');
+    });
+  });
+
+  document.querySelectorAll('.btn-pill-tg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sendUserAction('contact', 'Переход в Telegram Виктории (@d1vavi)', 'Нажата кнопка Telegram в контактах');
+    });
+  });
+
+  // 3. Звонки по телефону
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const phone = link.getAttribute('href').replace('tel:', '');
+      const curator = phone.includes('9165276461') ? 'Людмиле (Собаки, +79165276461)' : 'Виктории (Кошки, +79269255240)';
+      sendUserAction('call', `Нажатие на звонок ${curator}`, 'Клик по телефонному номеру');
+    });
+  });
+
+  // 4. Интерес к породе / питомцу (переключение табов Собаки / Кошки в номерах)
+  document.querySelectorAll('.tab-switcher .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      if (tab === 'dogs') {
+        sendUserAction('interest', 'Интерес к СОБАКАМ 🐶', 'Открыл условия и стоимость для собак');
+      } else if (tab === 'cats') {
+        sendUserAction('interest', 'Интерес к КОШКАМ 🐱', 'Открыл условия и стоимость для кошек');
+      }
+    });
+  });
+}
+
 /* =========================================================
    INIT
    ========================================================= */
@@ -650,6 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCallDropdown();
   initBackToTop();
   initVisitorTracking();
+  initActionTracking();
 });
 
 // Automatic cache invalidation for mobile back/forward cache (bfcache)

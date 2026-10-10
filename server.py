@@ -261,6 +261,51 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
             self._set_headers(200)
             self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
 
+        elif parsed.path == '/api/action':
+            import datetime
+            now_str = datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
+            action_type = payload.get('type', 'click')
+            label = payload.get('label', 'Действие')
+            details = payload.get('details', '')
+            source = payload.get('source', '')
+
+            # Красивые иконки и заголовки в зависимости от действия
+            if action_type == 'contact':
+                header = "🔥 <b>ГОРЯЧИЙ КЛИЕНТ! НАЖАТИЕ НА СВЯЗЬ</b>"
+                icon = "💬"
+            elif action_type == 'call':
+                header = "📞 <b>КЛИЕНТ ХОЧЕТ ПОЗВОНИТЬ!</b>"
+                icon = "📲"
+            elif action_type == 'interest':
+                header = "🐾 <b>ИНТЕРЕС К ПИТОМЦУ НА САЙТЕ</b>"
+                icon = "👀"
+            else:
+                header = "⚡ <b>ДЕЙСТВИЕ НА САЙТЕ</b>"
+                icon = "👉"
+
+            msg = (
+                f"{header}\n"
+                f"━━━━━━━━━━━━━━━━━━━\n"
+                f"{icon} <b>Действие:</b> {label}\n"
+            )
+            if details:
+                msg += f"ℹ️ <b>Подробности:</b> {details}\n"
+            if source:
+                msg += f"🌐 <b>Источник перехода:</b> {source}\n"
+            msg += (
+                f"🕒 <b>Время:</b> {now_str}\n"
+                f"━━━━━━━━━━━━━━━━━━━\n"
+                f"<i>Зоогостиница «Сёма» • semahotel.ru</i>"
+            )
+
+            try:
+                bot.send_message(CHAT_ID, msg)
+            except Exception as e:
+                logger.error(f"Error sending telegram action alert: {e}")
+
+            self._set_headers(200)
+            self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
+
         elif parsed.path == '/api/booking':
             name = payload.get('name', 'Не указано')
             phone = payload.get('phone', 'Не указано')
