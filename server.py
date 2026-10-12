@@ -34,6 +34,7 @@ REVIEWS_FILE = os.path.join(BASE_DIR, 'reviews_data.json')
 BOOKINGS_FILE = os.path.join(BASE_DIR, 'bookings_data.json')
 VISITS_FILE = os.path.join(BASE_DIR, 'visits_data.json')
 PENDING_FILE = os.path.join(BASE_DIR, 'pending_reviews.json')
+CURATOR_FILE = os.path.join(BASE_DIR, 'curator_data.json')
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -57,6 +58,15 @@ if not os.path.exists(VISITS_FILE):
 if not os.path.exists(PENDING_FILE):
     with open(PENDING_FILE, 'w', encoding='utf-8') as f:
         json.dump({}, f, ensure_ascii=False, indent=2)
+
+if not os.path.exists(CURATOR_FILE):
+    app_data_path = os.path.join(BASE_DIR, 'app', 'data.json')
+    initial_data = {}
+    if os.path.exists(app_data_path):
+        with open(app_data_path, 'r', encoding='utf-8') as f:
+            initial_data = json.load(f)
+    with open(CURATOR_FILE, 'w', encoding='utf-8') as f:
+        json.dump(initial_data, f, ensure_ascii=False, indent=2)
 
 
 def get_pending_reviews():
@@ -209,6 +219,17 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
             except Exception as e:
                 self._set_headers(500)
                 self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
+        elif parsed.path == '/api/curator-data':
+            try:
+                data = {}
+                if os.path.exists(CURATOR_FILE):
+                    with open(CURATOR_FILE, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                self._set_headers(200)
+                self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+            except Exception as e:
+                self._set_headers(500)
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
         else:
             self._set_headers(404)
             self.wfile.write(json.dumps({'error': 'Not found'}).encode('utf-8'))
@@ -305,6 +326,27 @@ class SemaHotelHandler(BaseHTTPRequestHandler):
 
             self._set_headers(200)
             self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
+
+        elif parsed.path == '/api/curator-data':
+            pin = payload.get('pin', '')
+            if pin != '6352':
+                self._set_headers(403)
+                self.wfile.write(json.dumps({'status': 'error', 'message': 'Invalid PIN'}).encode('utf-8'))
+                return
+
+            new_data = payload.get('data')
+            if new_data is not None:
+                try:
+                    with open(CURATOR_FILE, 'w', encoding='utf-8') as f:
+                        json.dump(new_data, f, ensure_ascii=False, indent=2)
+                    self._set_headers(200)
+                    self.wfile.write(json.dumps({'status': 'ok'}).encode('utf-8'))
+                except Exception as e:
+                    self._set_headers(500)
+                    self.wfile.write(json.dumps({'status': 'error', 'message': str(e)}).encode('utf-8'))
+            else:
+                self._set_headers(400)
+                self.wfile.write(json.dumps({'status': 'error', 'message': 'No data provided'}).encode('utf-8'))
 
         elif parsed.path == '/api/booking':
             name = payload.get('name', 'Не указано')
