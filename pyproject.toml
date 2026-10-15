@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sema-hotel"
+version = "0.1.0"
+description = "Syoma Pet Hotel & Training Center — Web Experience & Telegram Bot Dispatcher"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "All Rights Reserved" }
+authors = [
+    { name = "Viktoria Bolshakova", email = "D1vavi@mail.ru" }
+]
+dependencies = [
+    "pyTelegramBotAPI>=4.14.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4.0",
+    "pillow>=10.0.0"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bot"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+ignore = ["E501"]

@@ -1,24 +1,43 @@
 # Source & Design artifacts
 Design/
 raw_assets/
-assets/
+BEHANCE/
+BACKUP_*/
 
 # Node & dependencies
 node_modules/
 
-# Python & Environment
+# Python, virtualenv & build
 __pycache__/
 *.py[cod]
 *$py.class
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Environment & credentials (NEVER commit secrets!)
 .env
-.env*
+.env.*
+!.env.example
 *.key
+*.secret
 config.py
 deploy_ftp.py
+
+# Sensitive and temporary documents
+RKN_REGISTRATION_SUCCESS.md
+RKN_NOTIFICATION_FORM.md
+antigravity.md
 
 # Data & Local storage
 bookings_data.json
 reviews_data.json
+visits_data.json
+pending_reviews.json
+
+# Local scripts & tools
+scripts/
 
 # IDE & OS files
 .vscode/
@@ -31,14 +50,3 @@ Thumbs.db
 screenshot_*.png
 test_*.png
 *.tmp
-
-
-RKN_REGISTRATION_SUCCESS.md
-*.secret
-
-
-RKN_NOTIFICATION_FORM.md
-
-
-antigravity.md
-
