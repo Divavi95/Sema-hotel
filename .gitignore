@@ -32,3 +32,7 @@ screenshot_*.png
 test_*.png
 *.tmp
 
+
+RKN_REGISTRATION_SUCCESS.md
+*.secret
+
