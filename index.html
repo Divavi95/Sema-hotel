@@ -1485,8 +1485,11 @@
                 <label class="form-label-custom" for="reviewMsg">Расскажите как всё прошло :)</label>
                 <textarea id="reviewMsg" class="form-textarea-sage" placeholder="Поделитесь вашими впечатлениями..." required></textarea>
               </div>
-              <div style="display: flex; justify-content: flex-end;">
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
                 <button type="submit" class="btn-outline-terracotta" style="padding: 12px 36px;">Отправить</button>
+                <span style="font-size: 11px; color: var(--text-muted); text-align: right; line-height: 1.4; max-width: 320px;">
+                  Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" target="_blank" style="color: var(--primary-forest); text-decoration: underline;">Политикой конфиденциальности</a> и даете согласие на обработку персональных данных.
+                </span>
               </div>
             </form>
           </div>
@@ -1626,6 +1629,9 @@
                 <textarea id="bookComment" class="form-textarea-sage" placeholder="Натуральное питание, особенности характера, привычки..."></textarea>
               </div>
               <button type="submit" class="btn-primary" style="width: 100%; padding: 16px;">Отправить заявку на бронь</button>
+              <p style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 10px; line-height: 1.4;">
+                Нажимая на кнопку, вы соглашаетесь с <a href="privacy.html" target="_blank" style="color: var(--primary-forest); text-decoration: underline;">Политикой конфиденциальности</a> и даете согласие на обработку персональных данных в соответствии с 152-ФЗ РФ.
+              </p>
             </form>
           </div>
         </div>
@@ -1648,6 +1654,8 @@
       </div>
       <div class="footer-copy">
         © 2026 Зоогостиница и отель «Сёма». Профессиональная передержка собак и кошек, дрессировка у кинолога и профессиональная фотосъемка животных.
+        <br>
+        <a href="privacy.html" style="color: var(--terracotta-accent, #CE5E37); text-decoration: underline; font-size: 13px; display: inline-block; margin-top: 6px;">Политика конфиденциальности и обработки персональных данных (152-ФЗ)</a>
       </div>
     </div>
   </footer>
@@ -1668,6 +1676,39 @@
     </svg>
     <span class="back-to-top-text">Наверх</span>
   </button>
+
+  <!-- Плашка согласия на Cookie (по закону 152-ФЗ РФ) -->
+  <div id="cookieNotice" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 480px; background: #FFFFFF; border: 1px solid #E5E1D8; box-shadow: 0 12px 36px rgba(0,0,0,0.12); border-radius: 16px; padding: 18px 20px; z-index: 9999; font-family: 'Manrope', sans-serif;">
+    <div style="display: flex; align-items: flex-start; gap: 14px;">
+      <span style="font-size: 24px; line-height: 1;">🍪</span>
+      <div style="flex: 1;">
+        <p style="margin: 0 0 10px; font-size: 13px; line-height: 1.45; color: #2A302D;">
+          Мы используем файлы cookie и сервис Яндекс.Метрика для анализа посещаемости и комфортной работы сайта. Продолжая использовать сайт, вы соглашаетесь с <a href="privacy.html" target="_blank" style="color: #1C3D2D; font-weight: 600; text-decoration: underline;">Политикой конфиденциальности</a>.
+        </p>
+        <button id="acceptCookieBtn" style="background: #1C3D2D; color: #FFFFFF; border: none; padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s;">
+          Хорошо, понятно
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Проверка показа cookie-баннера
+    (function() {
+      try {
+        if (!localStorage.getItem('sema_cookies_accepted')) {
+          var banner = document.getElementById('cookieNotice');
+          if (banner) {
+            banner.style.display = 'block';
+            document.getElementById('acceptCookieBtn').addEventListener('click', function() {
+              localStorage.setItem('sema_cookies_accepted', 'true');
+              banner.style.display = 'none';
+            });
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <script src="script.js?v=20261009_01"></script>
 

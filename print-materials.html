@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Печатные материалы — Зоогостиница «Сёма»</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- QRCode.js for crisp vector QR generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --color-primary: #2F5943;
+      --color-primary-dark: #1E3B2B;
+      --color-primary-light: #417558;
+      --color-accent: #CF6B4C;
+      --color-accent-soft: #FFF4EF;
+      --color-sage: #E5EDE7;
+      --color-bg-warm: #FAF8F5;
+      --color-text-dark: #222924;
+      --color-text-muted: #606C64;
+      --color-border: #E0E7E2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #4A5568;
+      color: var(--color-text-dark);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Верхняя панель управления экраном (скрывается при печати) */
+    .controls-panel {
+      width: 100%;
+      max-width: 900px;
+      background: white;
+      padding: 18px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .controls-info h1 {
+      font-size: 20px;
+      color: var(--color-primary-dark);
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+
+    .controls-info p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    .controls-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--color-sage);
+      color: var(--color-primary-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #D2E0D6;
+    }
+
+    /* Базовый лист для печати */
+    .sheet {
+      background: white;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* ==========================================
+       1. ПОСТЕР А4 (210mm x 297mm)
+       ========================================== */
+    .poster-a4 {
+      width: 210mm;
+      height: 297mm;
+      padding: 14mm 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FAF8F5;
+      border: 1px solid #D8DFDA;
+      box-sizing: border-box;
+    }
+
+    /* Декоративная тонкая рамка */
+    .poster-inner-frame {
+      border: 2px solid var(--color-primary);
+      border-radius: 18px;
+      height: 100%;
+      padding: 10mm 10mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Фоновый декор угла */
+    .poster-inner-frame::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(207, 107, 76, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Шапка постера */
+    .poster-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--color-sage);
+      padding-bottom: 12px;
+    }
+
+    .poster-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .poster-logo-img {
+      height: 62px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .poster-brand-text h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .poster-brand-text span {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-accent);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .poster-badge-top {
+      background: var(--color-accent-soft);
+      border: 1.5px solid var(--color-accent);
+      color: var(--color-accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    /* Главный призыв и заголовок */
+    .poster-hero {
+      text-align: center;
+      margin: 12px 0 8px;
+    }
+
+    .poster-hero h3 {
+      font-size: 27px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+    }
+
+    .poster-hero h3 span.highlight {
+      color: var(--color-accent);
+      display: inline-block;
+    }
+
+    .poster-hero p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Сетка преимуществ */
+    .poster-benefits {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .benefit-card {
+      background: var(--color-bg-warm);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .benefit-icon {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+      background: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .benefit-content h4 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      line-height: 1.2;
+    }
+
+    .benefit-content p {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    /* Блок филиалов (собаки и кошки) */
+    .poster-branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 10px 0;
+    }
+
+    .branch-card {
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1.5px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .branch-pet-art {
+      position: absolute;
+      right: 8px;
+      bottom: 0;
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.12));
+    }
+
+    .branch-dogs {
+      background: linear-gradient(135deg, #F4F8F5 0%, #E9F1EC 100%);
+      border-color: #C6DCD0;
+    }
+
+    .branch-cats {
+      background: linear-gradient(135deg, #FFF9F5 0%, #FFF0E8 100%);
+      border-color: #F8D5C8;
+    }
+
+    .branch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .branch-dogs .branch-badge {
+      color: var(--color-primary);
+    }
+
+    .branch-cats .branch-badge {
+      color: var(--color-accent);
+    }
+
+    .branch-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--color-text-dark);
+      line-height: 1.2;
+    }
+
+    .branch-curator {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    .branch-phone {
+      margin-top: 8px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: var(--color-primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .branch-cats .branch-phone {
+      color: #B45134;
+    }
+
+    /* Подвал постера: Сайт и QR-код */
+    .poster-footer {
+      background: var(--color-primary);
+      border-radius: 14px;
+      padding: 12px 18px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-content {
+      flex: 1;
+    }
+
+    .footer-content h4 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-content p {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+
+    .footer-url {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #FFD4C2;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-qr-block {
+      background: white;
+      padding: 8px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-qr-img {
+      width: 78px;
+      height: 78px;
+    }
+
+    .footer-qr-block span {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================
+       2. ВИЗИТКИ (90mm x 50mm, Сетка на А4)
+       ========================================== */
+    .business-cards-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 18mm 15mm;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: white;
+    }
+
+    .sheet-section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      border-bottom: 2px solid var(--color-sage);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 90mm);
+      grid-auto-rows: 50mm;
+      gap: 8mm 6mm;
+      justify-content: center;
+    }
+
+    /* Одиночная визитка */
+    .biz-card {
+      width: 90mm;
+      height: 50mm;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+      border: 1px dashed #B8C5BD; /* Линии отреза для резака */
+      page-break-inside: avoid;
+    }
+
+    /* Лицевая сторона визитки (Стильная, брендовая) */
+    .card-front {
+      background: linear-gradient(145deg, #FAF8F5 0%, #FFFFFF 100%);
+      padding: 6mm 7mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-front-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .card-logo {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .card-front-brand h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      line-height: 1.1;
+    }
+
+    .card-front-brand span {
+      font-size: 9px;
+      color: var(--color-accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-front-tagline {
+      font-size: 9.5px;
+      color: var(--color-text-dark);
+      line-height: 1.35;
+      font-weight: 600;
+      margin: 3mm 0;
+      border-left: 2px solid var(--color-primary);
+      padding-left: 6px;
+    }
+
+    .card-front-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-sage);
+      padding-top: 4px;
+    }
+
+    .card-front-meta {
+      font-size: 8.5px;
+      color: var(--color-text-muted);
+    }
+
+    .card-front-meta strong {
+      color: var(--color-primary-dark);
+      font-size: 10px;
+      display: block;
+    }
+
+    .card-qr-box {
+      background: white;
+      padding: 3px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-qr-img {
+      width: 34px;
+      height: 34px;
+    }
+
+    .card-qr-box span {
+      font-size: 6.5px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+    }
+
+    /* Оборотная сторона визитки (Прямые контакты филиалов) */
+    .card-back {
+      background: white;
+      padding: 5mm 6mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-back-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1.5px solid var(--color-sage);
+      padding-bottom: 3px;
+    }
+
+    .card-back-branches {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 2mm 0;
+    }
+
+    .card-branch-row {
+      background: var(--color-bg-warm);
+      border-radius: 5px;
+      padding: 3px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .c-branch-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .c-branch-name {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--color-text-dark);
+    }
+
+    .c-branch-desc {
+      font-size: 7.5px;
+      color: var(--color-text-muted);
+    }
+
+    .c-branch-phone {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+    }
+
+    .card-back-footer {
+      text-align: center;
+      font-size: 8px;
+      color: var(--color-text-muted);
+      background: var(--color-sage);
+      padding: 3px;
+      border-radius: 4px;
+    }
+
+    .card-back-footer span {
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+
+    /* ==========================================
+       СТИЛИ ДЛЯ ПЕЧАТИ (@media print)
+       ========================================== */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+      }
+
+      .controls-panel {
+        display: none !important;
+      }
+
+      .sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        border: none !important;
+      }
+
+      .poster-a4 {
+        width: 100vw !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      .business-cards-sheet {
+        width: 100vw !important;
+        min-height: 100vh !important;
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Панель управления на экране -->
+  <div class="controls-panel">
+    <div class="controls-info">
+      <h1>Печатные рекламные материалы «Сёма»</h1>
+      <p>Формат А4 (постер для ветклиник и зоомагазинов) + комплект визиток (90 × 50 мм) с чистыми QR-кодами</p>
+    </div>
+    <div class="controls-actions">
+      <a href="index.html" class="btn btn-secondary">← Вернуться на сайт</a>
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Распечатать / Сохранить в PDF (Ctrl + P)
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ЛИСТ 1: ПОСТЕР А4 ДЛЯ КЛИНИК И ЗООМАГАЗИНОВ
+       ======================================================== -->
+  <div class="sheet poster-a4">
+    <div class="poster-inner-frame">
+      
+      <!-- Шапка -->
+      <header class="poster-header">
+        <div class="poster-brand">
+          <img src="images/logo_clean_full.png" alt="Логотип Сёма" class="poster-logo-img" onerror="this.src='images/logo.png'">
+          <div class="poster-brand-text">
+            <h2>Отель «Сёма»</h2>
+            <span>Зоогостиница & Передержка</span>
+          </div>
+        </div>
+        <div class="poster-badge-top">
+          🌲 Раменское • Бронницы • Жуковский
+        </div>
+      </header>
+
+      <!-- Главный посыл -->
+      <div class="poster-hero">
+        <h3>Уютная загородная передержка <br><span class="highlight">без клеток и стресса</span> для собак и кошек</h3>
+        <p>Комфортные отапливаемые номера, лесной воздух, забота кинолога и бережный уход</p>
+      </div>
+
+      <!-- Преимущества в 4 колонках -->
+      <div class="poster-benefits">
+        <div class="benefit-card">
+          <div class="benefit-icon">🏡</div>
+          <div class="benefit-content">
+            <h4>Никаких клеток и решёток</h4>
+            <p>Просторные отдельные номера со свежим ремонтом и домашним уютом</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🌲</div>
+          <div class="benefit-content">
+            <h4>Выгул в лесу 2–3 раза в день</h4>
+            <p>Индивидуальные прогулки на свежем воздухе среди хвойных деревьев</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📹</div>
+          <div class="benefit-content">
+            <h4>Видеонаблюдение 24/7</h4>
+            <p>Круглосуточный онлайн-доступ для хозяина, фото и видеоотчёты каждый день</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🎓</div>
+          <div class="benefit-content">
+            <h4>Дипломированный кинолог</h4>
+            <p>Занятия послушанием, социализация и бережное отношение без стресса</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🐾</div>
+          <div class="benefit-content">
+            <h4>Кошки и собаки раздельно</h4>
+            <p>Полностью изолированные филиалы: кошки не слышат и не видят собак</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🚐</div>
+          <div class="benefit-content">
+            <h4>Бережное зоотакси</h4>
+            <p>Заберём питомца прямо от дома и привезём обратно после отдыха</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Филиалы (Контакты кураторов) -->
+      <div class="poster-branches">
+        <!-- Собаки -->
+        <div class="branch-card branch-dogs">
+          <div>
+            <div class="branch-badge">🐶 Филиал для собак</div>
+            <div class="branch-title">Номера & Дрессировка</div>
+            <div class="branch-curator">Куратор и кинолог: Людмила</div>
+          </div>
+          <div class="branch-phone">
+            📞 +7 (916) 527-64-61
+          </div>
+          <img src="images/dog_exact_portrait.png" alt="Собака" class="branch-pet-art">
+        </div>
+
+        <!-- Кошки -->
+        <div class="branch-card branch-cats">
+          <div>
+            <div class="branch-badge">🐱 Филиал для кошек</div>
+            <div class="branch-title">Тёплые эко-номера</div>
+            <div class="branch-curator">Куратор и фотограф: Виктория</div>
+          </div>
+          <div class="branch-phone">
+            📞 +7 (926) 925-52-40
+          </div>
+          <img src="images/cat_exact_portrait.png" alt="Кошка" class="branch-pet-art">
+        </div>
+      </div>
+
+      <!-- Подвал: Сайт, бронирование и большой QR-код -->
+      <footer class="poster-footer">
+        <div class="footer-content">
+          <h4>🌐 Наведите камеру для перехода на сайт</h4>
+          <p>Цены без скрытых доплат, живые видеообзоры номеров, отзывы хозяев и онлайн-бронирование:</p>
+          <span class="footer-url">semahotel.ru</span>
+        </div>
+        <div class="footer-qr-block">
+          <div id="posterQrCode" class="footer-qr-img"></div>
+          <span>Открыть сайт</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ЛИСТ 2: ВИЗИТКИ (СТАНДАРТ 90 × 50 мм) ДЛЯ НАРЕЗКИ
+       ======================================================== -->
+  <div class="sheet business-cards-sheet">
+    <div class="sheet-section-title">
+      <span>Комплект визиток: Лицевая сторона (90 × 50 мм)</span>
+      <span style="font-size: 12px; font-weight: normal; color: var(--color-text-muted);">Пунктир — линия отреза</span>
+    </div>
+
+    <div class="cards-grid">
+      <!-- 4 лицевые визитки -->
+      <div class="biz-card card-front">
+        <div class="card-front-top">
+          <div class="card-front-brand">
+            <h3>Зоогостиница «Сёма»</h3>
+            <span>Отель для собак и кошек</span>
+          </div>
+          <img src="images/logo_clean_full.png" alt="Сёма" class="card-logo" onerror="this.src='images/logo.png'">
+        </div>
+        <div class="card-front-tagline">
+          Уютная передержка без клеток • Выгул в лесу • Видеонаблюдение 24/7 • Кинолог
+        </div>
+        <div class="card-front-bottom">
+          <div class="card-front-meta">
+            <strong>semahotel.ru</strong>
+            <span>Раменское • Бронницы • Жуковский</span>
+          </div>
+          <div class="card-qr-box">
+            <div class="card-qr-img card-qr-dynamic"></div>
+            <span>QR-сайт</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-card card-front">
+        <div class="card-front-top">
+          <div class="card-front-brand">
+            <h3>Зоогостиница «Сёма»</h3>
+            <span>Отель для собак и кошек</span>
+          </div>
+          <img src="images/logo_clean_full.png" alt="Сёма" class="card-logo" onerror="this.src='images/logo.png'">
+        </div>
+        <div class="card-front-tagline">
+          Уютная передержка без клеток • Выгул в лесу • Видеонаблюдение 24/7 • Кинолог
+        </div>
+        <div class="card-front-bottom">
+          <div class="card-front-meta">
+            <strong>semahotel.ru</strong>
+            <span>Раменское • Бронницы • Жуковский</span>
+          </div>
+          <div class="card-qr-box">
+            <div class="card-qr-img card-qr-dynamic"></div>
+            <span>QR-сайт</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-card card-front">
+        <div class="card-front-top">
+          <div class="card-front-brand">
+            <h3>Зоогостиница «Сёма»</h3>
+            <span>Отель для собак и кошек</span>
+          </div>
+          <img src="images/logo_clean_full.png" alt="Сёма" class="card-logo" onerror="this.src='images/logo.png'">
+        </div>
+        <div class="card-front-tagline">
+          Уютная передержка без клеток • Выгул в лесу • Видеонаблюдение 24/7 • Кинолог
+        </div>
+        <div class="card-front-bottom">
+          <div class="card-front-meta">
+            <strong>semahotel.ru</strong>
+            <span>Раменское • Бронницы • Жуковский</span>
+          </div>
+          <div class="card-qr-box">
+            <div class="card-qr-img card-qr-dynamic"></div>
+            <span>QR-сайт</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biz-card card-front">
+        <div class="card-front-top">
+          <div class="card-front-brand">
+            <h3>Зоогостиница «Сёма»</h3>
+            <span>Отель для собак и кошек</span>
+          </div>
+          <img src="images/logo_clean_full.png" alt="Сёма" class="card-logo" onerror="this.src='images/logo.png'">
+        </div>
+        <div class="card-front-tagline">
+          Уютная передержка без клеток • Выгул в лесу • Видеонаблюдение 24/7 • Кинолог
+        </div>
+        <div class="card-front-bottom">
+          <div class="card-front-meta">
+            <strong>semahotel.ru</strong>
+            <span>Раменское • Бронницы • Жуковский</span>
+          </div>
+          <div class="card-qr-box">
+            <div class="card-qr-img card-qr-dynamic"></div>
+            <span>QR-сайт</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел: Оборотная сторона (Контакты филиалов) -->
+    <div class="sheet-section-title" style="margin-top: 10px;">
+      <span>Комплект визиток: Оборотная сторона (прямые контакты)</span>
+    </div>
+
+    <div class="cards-grid">
+      <!-- 4 оборотные стороны -->
+      <div class="biz-card card-back">
+        <div class="card-back-title">Прямые контакты филиалов</div>
+        <div class="card-back-branches">
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐶 Собаки & Дрессировка</span>
+              <span class="c-branch-desc">Людмила (кинолог)</span>
+            </div>
+            <span class="c-branch-phone">+7 916 527-64-61</span>
+          </div>
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐱 Номера для кошек</span>
+              <span class="c-branch-desc">Виктория (куратор)</span>
+            </div>
+            <span class="c-branch-phone">+7 926 925-52-40</span>
+          </div>
+        </div>
+        <div class="card-back-footer">
+          Сайт & онлайн-бронь: <span>semahotel.ru</span>
+        </div>
+      </div>
+
+      <div class="biz-card card-back">
+        <div class="card-back-title">Прямые контакты филиалов</div>
+        <div class="card-back-branches">
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐶 Собаки & Дрессировка</span>
+              <span class="c-branch-desc">Людмила (кинолог)</span>
+            </div>
+            <span class="c-branch-phone">+7 916 527-64-61</span>
+          </div>
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐱 Номера для кошек</span>
+              <span class="c-branch-desc">Виктория (куратор)</span>
+            </div>
+            <span class="c-branch-phone">+7 926 925-52-40</span>
+          </div>
+        </div>
+        <div class="card-back-footer">
+          Сайт & онлайн-бронь: <span>semahotel.ru</span>
+        </div>
+      </div>
+
+      <div class="biz-card card-back">
+        <div class="card-back-title">Прямые контакты филиалов</div>
+        <div class="card-back-branches">
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐶 Собаки & Дрессировка</span>
+              <span class="c-branch-desc">Людмила (кинолог)</span>
+            </div>
+            <span class="c-branch-phone">+7 916 527-64-61</span>
+          </div>
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐱 Номера для кошек</span>
+              <span class="c-branch-desc">Виктория (куратор)</span>
+            </div>
+            <span class="c-branch-phone">+7 926 925-52-40</span>
+          </div>
+        </div>
+        <div class="card-back-footer">
+          Сайт & онлайн-бронь: <span>semahotel.ru</span>
+        </div>
+      </div>
+
+      <div class="biz-card card-back">
+        <div class="card-back-title">Прямые контакты филиалов</div>
+        <div class="card-back-branches">
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐶 Собаки & Дрессировка</span>
+              <span class="c-branch-desc">Людмила (кинолог)</span>
+            </div>
+            <span class="c-branch-phone">+7 916 527-64-61</span>
+          </div>
+          <div class="card-branch-row">
+            <div class="c-branch-left">
+              <span class="c-branch-name">🐱 Номера для кошек</span>
+              <span class="c-branch-desc">Виктория (куратор)</span>
+            </div>
+            <span class="c-branch-phone">+7 926 925-52-40</span>
+          </div>
+        </div>
+        <div class="card-back-footer">
+          Сайт & онлайн-бронь: <span>semahotel.ru</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипт автоматической генерации QR-кодов в векторном качестве -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var targetUrl = "https://semahotel.ru/?utm_source=offline&utm_medium=print";
+
+      // 1. QR-код для постера А4
+      var posterQrEl = document.getElementById("posterQrCode");
+      if (posterQrEl && window.QRCode) {
+        new QRCode(posterQrEl, {
+          text: targetUrl,
+          width: 78,
+          height: 78,
+          colorDark: "#1E3B2B",
+          colorLight: "#FFFFFF",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+
+      // 2. QR-коды для визиток
+      var cardQrEls = document.querySelectorAll(".card-qr-dynamic");
+      cardQrEls.forEach(function (el) {
+        if (window.QRCode) {
+          new QRCode(el, {
+            text: targetUrl,
+            width: 34,
+            height: 34,
+            colorDark: "#1E3B2B",
+            colorLight: "#FFFFFF",
+            correctLevel: QRCode.CorrectLevel.M
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
